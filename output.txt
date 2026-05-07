@@ -1,0 +1,2206 @@
+=== PSO Parameter Matrix Test ===
+Scenario: 100 Tasks / 10 VMs
+
+Swarm Size      100 Iterations       500 Iterations       1000 Iterations     
+---------------------------------------------------------------------------
+30 Particles   Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #8
+0.1: Broker: Sending cloudlet 1 to VM #7
+0.1: Broker: Sending cloudlet 2 to VM #1
+0.1: Broker: Sending cloudlet 3 to VM #8
+0.1: Broker: Sending cloudlet 4 to VM #8
+0.1: Broker: Sending cloudlet 5 to VM #1
+0.1: Broker: Sending cloudlet 6 to VM #6
+0.1: Broker: Sending cloudlet 7 to VM #7
+0.1: Broker: Sending cloudlet 8 to VM #0
+0.1: Broker: Sending cloudlet 9 to VM #0
+0.1: Broker: Sending cloudlet 10 to VM #6
+0.1: Broker: Sending cloudlet 11 to VM #6
+0.1: Broker: Sending cloudlet 12 to VM #8
+0.1: Broker: Sending cloudlet 13 to VM #5
+0.1: Broker: Sending cloudlet 14 to VM #9
+0.1: Broker: Sending cloudlet 15 to VM #9
+0.1: Broker: Sending cloudlet 16 to VM #8
+0.1: Broker: Sending cloudlet 17 to VM #7
+0.1: Broker: Sending cloudlet 18 to VM #4
+0.1: Broker: Sending cloudlet 19 to VM #2
+0.1: Broker: Sending cloudlet 20 to VM #0
+0.1: Broker: Sending cloudlet 21 to VM #1
+0.1: Broker: Sending cloudlet 22 to VM #8
+0.1: Broker: Sending cloudlet 23 to VM #3
+0.1: Broker: Sending cloudlet 24 to VM #0
+0.1: Broker: Sending cloudlet 25 to VM #2
+0.1: Broker: Sending cloudlet 26 to VM #3
+0.1: Broker: Sending cloudlet 27 to VM #8
+0.1: Broker: Sending cloudlet 28 to VM #5
+0.1: Broker: Sending cloudlet 29 to VM #0
+0.1: Broker: Sending cloudlet 30 to VM #9
+0.1: Broker: Sending cloudlet 31 to VM #3
+0.1: Broker: Sending cloudlet 32 to VM #3
+0.1: Broker: Sending cloudlet 33 to VM #7
+0.1: Broker: Sending cloudlet 34 to VM #5
+0.1: Broker: Sending cloudlet 35 to VM #3
+0.1: Broker: Sending cloudlet 36 to VM #3
+0.1: Broker: Sending cloudlet 37 to VM #0
+0.1: Broker: Sending cloudlet 38 to VM #0
+0.1: Broker: Sending cloudlet 39 to VM #9
+0.1: Broker: Sending cloudlet 40 to VM #5
+0.1: Broker: Sending cloudlet 41 to VM #3
+0.1: Broker: Sending cloudlet 42 to VM #7
+0.1: Broker: Sending cloudlet 43 to VM #6
+0.1: Broker: Sending cloudlet 44 to VM #6
+0.1: Broker: Sending cloudlet 45 to VM #5
+0.1: Broker: Sending cloudlet 46 to VM #5
+0.1: Broker: Sending cloudlet 47 to VM #8
+0.1: Broker: Sending cloudlet 48 to VM #6
+0.1: Broker: Sending cloudlet 49 to VM #1
+0.1: Broker: Sending cloudlet 50 to VM #1
+0.1: Broker: Sending cloudlet 51 to VM #9
+0.1: Broker: Sending cloudlet 52 to VM #0
+0.1: Broker: Sending cloudlet 53 to VM #0
+0.1: Broker: Sending cloudlet 54 to VM #8
+0.1: Broker: Sending cloudlet 55 to VM #5
+0.1: Broker: Sending cloudlet 56 to VM #3
+0.1: Broker: Sending cloudlet 57 to VM #9
+0.1: Broker: Sending cloudlet 58 to VM #3
+0.1: Broker: Sending cloudlet 59 to VM #8
+0.1: Broker: Sending cloudlet 60 to VM #0
+0.1: Broker: Sending cloudlet 61 to VM #2
+0.1: Broker: Sending cloudlet 62 to VM #0
+0.1: Broker: Sending cloudlet 63 to VM #3
+0.1: Broker: Sending cloudlet 64 to VM #6
+0.1: Broker: Sending cloudlet 65 to VM #3
+0.1: Broker: Sending cloudlet 66 to VM #7
+0.1: Broker: Sending cloudlet 67 to VM #4
+0.1: Broker: Sending cloudlet 68 to VM #4
+0.1: Broker: Sending cloudlet 69 to VM #6
+0.1: Broker: Sending cloudlet 70 to VM #3
+0.1: Broker: Sending cloudlet 71 to VM #6
+0.1: Broker: Sending cloudlet 72 to VM #5
+0.1: Broker: Sending cloudlet 73 to VM #1
+0.1: Broker: Sending cloudlet 74 to VM #2
+0.1: Broker: Sending cloudlet 75 to VM #7
+0.1: Broker: Sending cloudlet 76 to VM #3
+0.1: Broker: Sending cloudlet 77 to VM #0
+0.1: Broker: Sending cloudlet 78 to VM #8
+0.1: Broker: Sending cloudlet 79 to VM #5
+0.1: Broker: Sending cloudlet 80 to VM #8
+0.1: Broker: Sending cloudlet 81 to VM #5
+0.1: Broker: Sending cloudlet 82 to VM #6
+0.1: Broker: Sending cloudlet 83 to VM #0
+0.1: Broker: Sending cloudlet 84 to VM #5
+0.1: Broker: Sending cloudlet 85 to VM #4
+0.1: Broker: Sending cloudlet 86 to VM #1
+0.1: Broker: Sending cloudlet 87 to VM #1
+0.1: Broker: Sending cloudlet 88 to VM #3
+0.1: Broker: Sending cloudlet 89 to VM #8
+0.1: Broker: Sending cloudlet 90 to VM #6
+0.1: Broker: Sending cloudlet 91 to VM #3
+0.1: Broker: Sending cloudlet 92 to VM #5
+0.1: Broker: Sending cloudlet 93 to VM #9
+0.1: Broker: Sending cloudlet 94 to VM #5
+0.1: Broker: Sending cloudlet 95 to VM #0
+0.1: Broker: Sending cloudlet 96 to VM #5
+0.1: Broker: Sending cloudlet 97 to VM #0
+0.1: Broker: Sending cloudlet 98 to VM #8
+0.1: Broker: Sending cloudlet 99 to VM #0
+8.2064: Broker: Cloudlet 99 received
+10.6844: Broker: Cloudlet 93 received
+10.7944: Broker: Cloudlet 66 received
+12.860999999999999: Broker: Cloudlet 19 received
+13.636399999999998: Broker: Cloudlet 67 received
+15.428399999999998: Broker: Cloudlet 78 received
+17.301288888888887: Broker: Cloudlet 92 received
+18.22288888888889: Broker: Cloudlet 87 received
+21.453269841269844: Broker: Cloudlet 64 received
+22.035269841269844: Broker: Cloudlet 91 received
+23.817269841269844: Broker: Cloudlet 37 received
+25.721587301587302: Broker: Cloudlet 89 received
+26.01047619047619: Broker: Cloudlet 13 received
+26.62087619047619: Broker: Cloudlet 9 received
+28.00967619047619: Broker: Cloudlet 41 received
+28.11967619047619: Broker: Cloudlet 42 received
+29.962444444444447: Broker: Cloudlet 57 received
+30.522444444444446: Broker: Cloudlet 11 received
+36.66026666666667: Broker: Cloudlet 80 received
+36.97746666666667: Broker: Cloudlet 95 received
+37.08746666666667: Broker: Cloudlet 40 received
+37.30026666666667: Broker: Cloudlet 2 received
+37.461466666666674: Broker: Cloudlet 26 received
+40.83828571428572: Broker: Cloudlet 48 received
+41.80139682539683: Broker: Cloudlet 84 received
+42.710730158730165: Broker: Cloudlet 98 received
+43.71873015873017: Broker: Cloudlet 31 received
+43.88193015873017: Broker: Cloudlet 20 received
+44.12193015873017: Broker: Cloudlet 61 received
+45.27733333333333: Broker: Cloudlet 54 received
+45.40333333333333: Broker: Cloudlet 85 received
+45.958800000000004: Broker: Cloudlet 82 received
+46.0688: Broker: Cloudlet 50 received
+46.0688: Broker: Cloudlet 1 received
+46.21546666666667: Broker: Cloudlet 72 received
+46.32546666666667: Broker: Cloudlet 8 received
+46.43546666666667: Broker: Cloudlet 30 received
+46.68626666666667: Broker: Cloudlet 70 received
+48.57422222222222: Broker: Cloudlet 22 received
+48.98222222222222: Broker: Cloudlet 45 received
+49.7452: Broker: Cloudlet 83 received
+49.7452: Broker: Cloudlet 32 received
+50.6892: Broker: Cloudlet 6 received
+51.4492: Broker: Cloudlet 86 received
+51.68031111111111: Broker: Cloudlet 3 received
+51.88551111111111: Broker: Cloudlet 60 received
+52.00431111111111: Broker: Cloudlet 35 received
+52.477199999999996: Broker: Cloudlet 34 received
+52.801199999999994: Broker: Cloudlet 33 received
+53.33319999999999: Broker: Cloudlet 39 received
+53.72679999999999: Broker: Cloudlet 65 received
+53.953085714285706: Broker: Cloudlet 44 received
+56.535485714285706: Broker: Cloudlet 62 received
+56.94615238095237: Broker: Cloudlet 94 received
+57.41815238095237: Broker: Cloudlet 25 received
+58.02481904761904: Broker: Cloudlet 16 received
+58.22881904761904: Broker: Cloudlet 68 received
+59.1528: Broker: Cloudlet 76 received
+59.2872: Broker: Cloudlet 49 received
+59.7942: Broker: Cloudlet 17 received
+59.904199999999996: Broker: Cloudlet 10 received
+60.58219999999999: Broker: Cloudlet 14 received
+60.69219999999999: Broker: Cloudlet 53 received
+60.80219999999999: Broker: Cloudlet 63 received
+60.91219999999999: Broker: Cloudlet 59 received
+61.22953333333332: Broker: Cloudlet 46 received
+61.54153333333332: Broker: Cloudlet 29 received
+62.46039047619046: Broker: Cloudlet 69 received
+62.690790476190465: Broker: Cloudlet 73 received
+63.94577777777778: Broker: Cloudlet 47 received
+64.05577777777778: Broker: Cloudlet 55 received
+64.45777777777778: Broker: Cloudlet 24 received
+64.96777777777778: Broker: Cloudlet 88 received
+66.24977777777778: Broker: Cloudlet 7 received
+66.60000000000001: Broker: Cloudlet 79 received
+66.75111111111111: Broker: Cloudlet 4 received
+66.86111111111111: Broker: Cloudlet 15 received
+66.97111111111111: Broker: Cloudlet 58 received
+67.26391111111111: Broker: Cloudlet 52 received
+67.37391111111111: Broker: Cloudlet 36 received
+67.37391111111111: Broker: Cloudlet 90 received
+67.74991111111112: Broker: Cloudlet 28 received
+67.85991111111112: Broker: Cloudlet 12 received
+67.96991111111112: Broker: Cloudlet 38 received
+67.96991111111112: Broker: Cloudlet 21 received
+68.43391111111112: Broker: Cloudlet 74 received
+68.54391111111111: Broker: Cloudlet 18 received
+68.65391111111111: Broker: Cloudlet 56 received
+68.76391111111111: Broker: Cloudlet 43 received
+68.98791111111112: Broker: Cloudlet 75 received
+69.09791111111112: Broker: Cloudlet 97 received
+69.09791111111112: Broker: Cloudlet 81 received
+69.20791111111112: Broker: Cloudlet 23 received
+69.20791111111112: Broker: Cloudlet 0 received
+69.20791111111112: Broker: Cloudlet 51 received
+69.48151111111112: Broker: Cloudlet 5 received
+69.59151111111112: Broker: Cloudlet 71 received
+69.59151111111112: Broker: Cloudlet 27 received
+69.70151111111112: Broker: Cloudlet 77 received
+69.70151111111112: Broker: Cloudlet 96 received
+69.70151111111112: Broker: All Cloudlets executed. Finishing...
+69.70151111111112: Broker: Destroying VM #0
+69.70151111111112: Broker: Destroying VM #1
+69.70151111111112: Broker: Destroying VM #2
+69.70151111111112: Broker: Destroying VM #3
+69.70151111111112: Broker: Destroying VM #4
+69.70151111111112: Broker: Destroying VM #5
+69.70151111111112: Broker: Destroying VM #6
+69.70151111111112: Broker: Destroying VM #7
+69.70151111111112: Broker: Destroying VM #8
+69.70151111111112: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 69.70               Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #5
+0.1: Broker: Sending cloudlet 1 to VM #0
+0.1: Broker: Sending cloudlet 2 to VM #5
+0.1: Broker: Sending cloudlet 3 to VM #7
+0.1: Broker: Sending cloudlet 4 to VM #1
+0.1: Broker: Sending cloudlet 5 to VM #6
+0.1: Broker: Sending cloudlet 6 to VM #9
+0.1: Broker: Sending cloudlet 7 to VM #9
+0.1: Broker: Sending cloudlet 8 to VM #5
+0.1: Broker: Sending cloudlet 9 to VM #2
+0.1: Broker: Sending cloudlet 10 to VM #0
+0.1: Broker: Sending cloudlet 11 to VM #3
+0.1: Broker: Sending cloudlet 12 to VM #6
+0.1: Broker: Sending cloudlet 13 to VM #1
+0.1: Broker: Sending cloudlet 14 to VM #9
+0.1: Broker: Sending cloudlet 15 to VM #7
+0.1: Broker: Sending cloudlet 16 to VM #5
+0.1: Broker: Sending cloudlet 17 to VM #4
+0.1: Broker: Sending cloudlet 18 to VM #3
+0.1: Broker: Sending cloudlet 19 to VM #6
+0.1: Broker: Sending cloudlet 20 to VM #3
+0.1: Broker: Sending cloudlet 21 to VM #6
+0.1: Broker: Sending cloudlet 22 to VM #7
+0.1: Broker: Sending cloudlet 23 to VM #1
+0.1: Broker: Sending cloudlet 24 to VM #5
+0.1: Broker: Sending cloudlet 25 to VM #7
+0.1: Broker: Sending cloudlet 26 to VM #1
+0.1: Broker: Sending cloudlet 27 to VM #0
+0.1: Broker: Sending cloudlet 28 to VM #5
+0.1: Broker: Sending cloudlet 29 to VM #0
+0.1: Broker: Sending cloudlet 30 to VM #1
+0.1: Broker: Sending cloudlet 31 to VM #7
+0.1: Broker: Sending cloudlet 32 to VM #3
+0.1: Broker: Sending cloudlet 33 to VM #2
+0.1: Broker: Sending cloudlet 34 to VM #1
+0.1: Broker: Sending cloudlet 35 to VM #4
+0.1: Broker: Sending cloudlet 36 to VM #6
+0.1: Broker: Sending cloudlet 37 to VM #8
+0.1: Broker: Sending cloudlet 38 to VM #1
+0.1: Broker: Sending cloudlet 39 to VM #0
+0.1: Broker: Sending cloudlet 40 to VM #6
+0.1: Broker: Sending cloudlet 41 to VM #7
+0.1: Broker: Sending cloudlet 42 to VM #5
+0.1: Broker: Sending cloudlet 43 to VM #8
+0.1: Broker: Sending cloudlet 44 to VM #3
+0.1: Broker: Sending cloudlet 45 to VM #8
+0.1: Broker: Sending cloudlet 46 to VM #2
+0.1: Broker: Sending cloudlet 47 to VM #7
+0.1: Broker: Sending cloudlet 48 to VM #0
+0.1: Broker: Sending cloudlet 49 to VM #9
+0.1: Broker: Sending cloudlet 50 to VM #7
+0.1: Broker: Sending cloudlet 51 to VM #9
+0.1: Broker: Sending cloudlet 52 to VM #3
+0.1: Broker: Sending cloudlet 53 to VM #9
+0.1: Broker: Sending cloudlet 54 to VM #2
+0.1: Broker: Sending cloudlet 55 to VM #3
+0.1: Broker: Sending cloudlet 56 to VM #1
+0.1: Broker: Sending cloudlet 57 to VM #2
+0.1: Broker: Sending cloudlet 58 to VM #2
+0.1: Broker: Sending cloudlet 59 to VM #2
+0.1: Broker: Sending cloudlet 60 to VM #4
+0.1: Broker: Sending cloudlet 61 to VM #8
+0.1: Broker: Sending cloudlet 62 to VM #2
+0.1: Broker: Sending cloudlet 63 to VM #0
+0.1: Broker: Sending cloudlet 64 to VM #5
+0.1: Broker: Sending cloudlet 65 to VM #5
+0.1: Broker: Sending cloudlet 66 to VM #1
+0.1: Broker: Sending cloudlet 67 to VM #5
+0.1: Broker: Sending cloudlet 68 to VM #1
+0.1: Broker: Sending cloudlet 69 to VM #7
+0.1: Broker: Sending cloudlet 70 to VM #2
+0.1: Broker: Sending cloudlet 71 to VM #4
+0.1: Broker: Sending cloudlet 72 to VM #9
+0.1: Broker: Sending cloudlet 73 to VM #9
+0.1: Broker: Sending cloudlet 74 to VM #0
+0.1: Broker: Sending cloudlet 75 to VM #5
+0.1: Broker: Sending cloudlet 76 to VM #5
+0.1: Broker: Sending cloudlet 77 to VM #1
+0.1: Broker: Sending cloudlet 78 to VM #5
+0.1: Broker: Sending cloudlet 79 to VM #4
+0.1: Broker: Sending cloudlet 80 to VM #5
+0.1: Broker: Sending cloudlet 81 to VM #3
+0.1: Broker: Sending cloudlet 82 to VM #8
+0.1: Broker: Sending cloudlet 83 to VM #7
+0.1: Broker: Sending cloudlet 84 to VM #9
+0.1: Broker: Sending cloudlet 85 to VM #7
+0.1: Broker: Sending cloudlet 86 to VM #1
+0.1: Broker: Sending cloudlet 87 to VM #1
+0.1: Broker: Sending cloudlet 88 to VM #3
+0.1: Broker: Sending cloudlet 89 to VM #1
+0.1: Broker: Sending cloudlet 90 to VM #7
+0.1: Broker: Sending cloudlet 91 to VM #2
+0.1: Broker: Sending cloudlet 92 to VM #7
+0.1: Broker: Sending cloudlet 93 to VM #7
+0.1: Broker: Sending cloudlet 94 to VM #3
+0.1: Broker: Sending cloudlet 95 to VM #2
+0.1: Broker: Sending cloudlet 96 to VM #7
+0.1: Broker: Sending cloudlet 97 to VM #8
+0.1: Broker: Sending cloudlet 98 to VM #9
+0.1: Broker: Sending cloudlet 99 to VM #8
+8.687999999999999: Broker: Cloudlet 44 received
+13.394: Broker: Cloudlet 53 received
+15.146888888888888: Broker: Cloudlet 89 received
+17.766444444444446: Broker: Cloudlet 80 received
+18.78152380952381: Broker: Cloudlet 46 received
+20.063333333333336: Broker: Cloudlet 69 received
+20.568933333333337: Broker: Cloudlet 1 received
+20.778933333333338: Broker: Cloudlet 45 received
+23.118933333333338: Broker: Cloudlet 35 received
+23.70826666666667: Broker: Cloudlet 38 received
+24.710222222222225: Broker: Cloudlet 28 received
+25.455022222222226: Broker: Cloudlet 47 received
+25.826000000000004: Broker: Cloudlet 84 received
+25.936000000000007: Broker: Cloudlet 55 received
+26.59885714285715: Broker: Cloudlet 91 received
+29.226285714285716: Broker: Cloudlet 99 received
+34.849000000000004: Broker: Cloudlet 8 received
+35.527: Broker: Cloudlet 12 received
+37.05766666666667: Broker: Cloudlet 66 received
+39.09497142857143: Broker: Cloudlet 63 received
+40.80057142857142: Broker: Cloudlet 41 received
+43.49066666666667: Broker: Cloudlet 20 received
+43.60066666666667: Broker: Cloudlet 51 received
+44.586: Broker: Cloudlet 95 received
+45.00644444444444: Broker: Cloudlet 64 received
+45.136044444444444: Broker: Cloudlet 25 received
+45.26804444444444: Broker: Cloudlet 77 received
+46.657333333333334: Broker: Cloudlet 17 received
+47.34733333333333: Broker: Cloudlet 5 received
+48.9152: Broker: Cloudlet 10 received
+49.35171428571429: Broker: Cloudlet 43 received
+50.87304761904762: Broker: Cloudlet 49 received
+50.98304761904762: Broker: Cloudlet 52 received
+51.09304761904762: Broker: Cloudlet 70 received
+54.544799999999995: Broker: Cloudlet 56 received
+55.02764444444445: Broker: Cloudlet 16 received
+55.14204444444445: Broker: Cloudlet 90 received
+55.26204444444445: Broker: Cloudlet 92 received
+56.33004444444445: Broker: Cloudlet 65 received
+56.510044444444446: Broker: Cloudlet 23 received
+57.358044444444445: Broker: Cloudlet 58 received
+58.07004444444445: Broker: Cloudlet 88 received
+58.92324444444445: Broker: Cloudlet 96 received
+59.03324444444445: Broker: Cloudlet 98 received
+59.32924444444445: Broker: Cloudlet 39 received
+59.780800000000006: Broker: Cloudlet 0 received
+59.99280000000001: Broker: Cloudlet 40 received
+60.79280000000001: Broker: Cloudlet 68 received
+60.924800000000005: Broker: Cloudlet 71 received
+61.034800000000004: Broker: Cloudlet 57 received
+61.144800000000004: Broker: Cloudlet 83 received
+61.144800000000004: Broker: Cloudlet 37 received
+61.61813333333334: Broker: Cloudlet 11 received
+61.72813333333334: Broker: Cloudlet 2 received
+61.83813333333334: Broker: Cloudlet 86 received
+62.23146666666667: Broker: Cloudlet 72 received
+62.56746666666667: Broker: Cloudlet 15 received
+62.67746666666667: Broker: Cloudlet 54 received
+63.06786666666667: Broker: Cloudlet 74 received
+63.702: Broker: Cloudlet 36 received
+63.812: Broker: Cloudlet 4 received
+64.61466666666666: Broker: Cloudlet 78 received
+65.202: Broker: Cloudlet 82 received
+65.634: Broker: Cloudlet 94 received
+65.9844: Broker: Cloudlet 93 received
+66.4084: Broker: Cloudlet 14 received
+67.33411428571429: Broker: Cloudlet 59 received
+67.44411428571429: Broker: Cloudlet 60 received
+67.44411428571429: Broker: Cloudlet 22 received
+67.6745142857143: Broker: Cloudlet 27 received
+67.7845142857143: Broker: Cloudlet 42 received
+67.90229206349207: Broker: Cloudlet 30 received
+68.89399999999999: Broker: Cloudlet 18 received
+69.008: Broker: Cloudlet 73 received
+69.172: Broker: Cloudlet 21 received
+69.49199999999999: Broker: Cloudlet 31 received
+69.60933333333332: Broker: Cloudlet 24 received
+69.71933333333332: Broker: Cloudlet 87 received
+69.71933333333332: Broker: Cloudlet 62 received
+70.69: Broker: Cloudlet 75 received
+70.8: Broker: Cloudlet 13 received
+70.8: Broker: Cloudlet 50 received
+70.91: Broker: Cloudlet 29 received
+71.02: Broker: Cloudlet 97 received
+71.13: Broker: Cloudlet 32 received
+71.13: Broker: Cloudlet 19 received
+71.24: Broker: Cloudlet 33 received
+71.452: Broker: Cloudlet 3 received
+71.562: Broker: Cloudlet 26 received
+71.562: Broker: Cloudlet 79 received
+71.69666666666666: Broker: Cloudlet 7 received
+71.80666666666666: Broker: Cloudlet 76 received
+72.22466666666666: Broker: Cloudlet 81 received
+72.33466666666666: Broker: Cloudlet 85 received
+72.44466666666666: Broker: Cloudlet 48 received
+72.44466666666666: Broker: Cloudlet 9 received
+72.55799999999999: Broker: Cloudlet 34 received
+72.66799999999999: Broker: Cloudlet 67 received
+72.66799999999999: Broker: Cloudlet 61 received
+72.66799999999999: Broker: Cloudlet 6 received
+72.66799999999999: Broker: All Cloudlets executed. Finishing...
+72.66799999999999: Broker: Destroying VM #0
+72.66799999999999: Broker: Destroying VM #1
+72.66799999999999: Broker: Destroying VM #2
+72.66799999999999: Broker: Destroying VM #3
+72.66799999999999: Broker: Destroying VM #4
+72.66799999999999: Broker: Destroying VM #5
+72.66799999999999: Broker: Destroying VM #6
+72.66799999999999: Broker: Destroying VM #7
+72.66799999999999: Broker: Destroying VM #8
+72.66799999999999: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 72.67               Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #5
+0.1: Broker: Sending cloudlet 1 to VM #0
+0.1: Broker: Sending cloudlet 2 to VM #1
+0.1: Broker: Sending cloudlet 3 to VM #6
+0.1: Broker: Sending cloudlet 4 to VM #3
+0.1: Broker: Sending cloudlet 5 to VM #8
+0.1: Broker: Sending cloudlet 6 to VM #5
+0.1: Broker: Sending cloudlet 7 to VM #4
+0.1: Broker: Sending cloudlet 8 to VM #5
+0.1: Broker: Sending cloudlet 9 to VM #4
+0.1: Broker: Sending cloudlet 10 to VM #5
+0.1: Broker: Sending cloudlet 11 to VM #4
+0.1: Broker: Sending cloudlet 12 to VM #7
+0.1: Broker: Sending cloudlet 13 to VM #6
+0.1: Broker: Sending cloudlet 14 to VM #3
+0.1: Broker: Sending cloudlet 15 to VM #0
+0.1: Broker: Sending cloudlet 16 to VM #4
+0.1: Broker: Sending cloudlet 17 to VM #6
+0.1: Broker: Sending cloudlet 18 to VM #1
+0.1: Broker: Sending cloudlet 19 to VM #2
+0.1: Broker: Sending cloudlet 20 to VM #3
+0.1: Broker: Sending cloudlet 21 to VM #3
+0.1: Broker: Sending cloudlet 22 to VM #1
+0.1: Broker: Sending cloudlet 23 to VM #5
+0.1: Broker: Sending cloudlet 24 to VM #0
+0.1: Broker: Sending cloudlet 25 to VM #7
+0.1: Broker: Sending cloudlet 26 to VM #2
+0.1: Broker: Sending cloudlet 27 to VM #0
+0.1: Broker: Sending cloudlet 28 to VM #2
+0.1: Broker: Sending cloudlet 29 to VM #6
+0.1: Broker: Sending cloudlet 30 to VM #4
+0.1: Broker: Sending cloudlet 31 to VM #2
+0.1: Broker: Sending cloudlet 32 to VM #5
+0.1: Broker: Sending cloudlet 33 to VM #5
+0.1: Broker: Sending cloudlet 34 to VM #4
+0.1: Broker: Sending cloudlet 35 to VM #0
+0.1: Broker: Sending cloudlet 36 to VM #6
+0.1: Broker: Sending cloudlet 37 to VM #3
+0.1: Broker: Sending cloudlet 38 to VM #8
+0.1: Broker: Sending cloudlet 39 to VM #6
+0.1: Broker: Sending cloudlet 40 to VM #2
+0.1: Broker: Sending cloudlet 41 to VM #5
+0.1: Broker: Sending cloudlet 42 to VM #0
+0.1: Broker: Sending cloudlet 43 to VM #4
+0.1: Broker: Sending cloudlet 44 to VM #8
+0.1: Broker: Sending cloudlet 45 to VM #3
+0.1: Broker: Sending cloudlet 46 to VM #0
+0.1: Broker: Sending cloudlet 47 to VM #5
+0.1: Broker: Sending cloudlet 48 to VM #4
+0.1: Broker: Sending cloudlet 49 to VM #2
+0.1: Broker: Sending cloudlet 50 to VM #0
+0.1: Broker: Sending cloudlet 51 to VM #7
+0.1: Broker: Sending cloudlet 52 to VM #4
+0.1: Broker: Sending cloudlet 53 to VM #8
+0.1: Broker: Sending cloudlet 54 to VM #5
+0.1: Broker: Sending cloudlet 55 to VM #5
+0.1: Broker: Sending cloudlet 56 to VM #5
+0.1: Broker: Sending cloudlet 57 to VM #3
+0.1: Broker: Sending cloudlet 58 to VM #4
+0.1: Broker: Sending cloudlet 59 to VM #3
+0.1: Broker: Sending cloudlet 60 to VM #5
+0.1: Broker: Sending cloudlet 61 to VM #5
+0.1: Broker: Sending cloudlet 62 to VM #2
+0.1: Broker: Sending cloudlet 63 to VM #2
+0.1: Broker: Sending cloudlet 64 to VM #7
+0.1: Broker: Sending cloudlet 65 to VM #5
+0.1: Broker: Sending cloudlet 66 to VM #5
+0.1: Broker: Sending cloudlet 67 to VM #6
+0.1: Broker: Sending cloudlet 68 to VM #2
+0.1: Broker: Sending cloudlet 69 to VM #1
+0.1: Broker: Sending cloudlet 70 to VM #4
+0.1: Broker: Sending cloudlet 71 to VM #5
+0.1: Broker: Sending cloudlet 72 to VM #8
+0.1: Broker: Sending cloudlet 73 to VM #5
+0.1: Broker: Sending cloudlet 74 to VM #3
+0.1: Broker: Sending cloudlet 75 to VM #4
+0.1: Broker: Sending cloudlet 76 to VM #0
+0.1: Broker: Sending cloudlet 77 to VM #5
+0.1: Broker: Sending cloudlet 78 to VM #6
+0.1: Broker: Sending cloudlet 79 to VM #9
+0.1: Broker: Sending cloudlet 80 to VM #9
+0.1: Broker: Sending cloudlet 81 to VM #0
+0.1: Broker: Sending cloudlet 82 to VM #5
+0.1: Broker: Sending cloudlet 83 to VM #0
+0.1: Broker: Sending cloudlet 84 to VM #3
+0.1: Broker: Sending cloudlet 85 to VM #6
+0.1: Broker: Sending cloudlet 86 to VM #9
+0.1: Broker: Sending cloudlet 87 to VM #9
+0.1: Broker: Sending cloudlet 88 to VM #4
+0.1: Broker: Sending cloudlet 89 to VM #4
+0.1: Broker: Sending cloudlet 90 to VM #4
+0.1: Broker: Sending cloudlet 91 to VM #2
+0.1: Broker: Sending cloudlet 92 to VM #0
+0.1: Broker: Sending cloudlet 93 to VM #3
+0.1: Broker: Sending cloudlet 94 to VM #7
+0.1: Broker: Sending cloudlet 95 to VM #9
+0.1: Broker: Sending cloudlet 96 to VM #4
+0.1: Broker: Sending cloudlet 97 to VM #0
+0.1: Broker: Sending cloudlet 98 to VM #1
+0.1: Broker: Sending cloudlet 99 to VM #0
+12.402: Broker: Cloudlet 91 received
+14.520190476190475: Broker: Cloudlet 83 received
+15.087047619047619: Broker: Cloudlet 75 received
+18.891492063492063: Broker: Cloudlet 61 received
+20.432000000000002: Broker: Cloudlet 36 received
+22.092000000000002: Broker: Cloudlet 79 received
+22.290000000000003: Broker: Cloudlet 63 received
+25.344: Broker: Cloudlet 69 received
+29.142: Broker: Cloudlet 72 received
+29.252000000000002: Broker: Cloudlet 64 received
+30.662222222222226: Broker: Cloudlet 32 received
+31.511999999999997: Broker: Cloudlet 93 received
+32.789142857142856: Broker: Cloudlet 34 received
+34.708888888888886: Broker: Cloudlet 8 received
+35.31514285714286: Broker: Cloudlet 92 received
+35.58714285714286: Broker: Cloudlet 16 received
+37.20266666666667: Broker: Cloudlet 59 received
+39.03857142857143: Broker: Cloudlet 76 received
+40.952000000000005: Broker: Cloudlet 66 received
+49.284000000000006: Broker: Cloudlet 19 received
+49.97200000000001: Broker: Cloudlet 17 received
+50.15771428571429: Broker: Cloudlet 7 received
+51.22838095238096: Broker: Cloudlet 27 received
+54.65238095238096: Broker: Cloudlet 12 received
+58.01657142857143: Broker: Cloudlet 44 received
+58.7632380952381: Broker: Cloudlet 41 received
+59.33: Broker: Cloudlet 2 received
+60.05: Broker: Cloudlet 21 received
+60.674: Broker: Cloudlet 52 received
+60.96044444444445: Broker: Cloudlet 80 received
+66.25866666666667: Broker: Cloudlet 10 received
+66.45466666666667: Broker: Cloudlet 85 received
+68.61066666666667: Broker: Cloudlet 62 received
+69.12906666666667: Broker: Cloudlet 14 received
+69.28620952380953: Broker: Cloudlet 70 received
+69.39620952380953: Broker: Cloudlet 97 received
+69.50820952380953: Broker: Cloudlet 54 received
+70.52509841269841: Broker: Cloudlet 60 received
+70.7170984126984: Broker: Cloudlet 46 received
+73.39138412698412: Broker: Cloudlet 11 received
+77.60938412698412: Broker: Cloudlet 13 received
+78.60538412698412: Broker: Cloudlet 40 received
+81.1388: Broker: Cloudlet 45 received
+81.2488: Broker: Cloudlet 6 received
+82.082: Broker: Cloudlet 25 received
+82.40733333333333: Broker: Cloudlet 35 received
+82.70047619047618: Broker: Cloudlet 90 received
+82.90447619047617: Broker: Cloudlet 87 received
+83.01447619047617: Broker: Cloudlet 18 received
+83.51314285714284: Broker: Cloudlet 71 received
+83.82514285714284: Broker: Cloudlet 5 received
+84.65554285714283: Broker: Cloudlet 4 received
+85.26054285714284: Broker: Cloudlet 67 received
+86.1662857142857: Broker: Cloudlet 30 received
+86.3112857142857: Broker: Cloudlet 68 received
+86.95396825396824: Broker: Cloudlet 55 received
+87.06396825396824: Broker: Cloudlet 15 received
+87.71196825396824: Broker: Cloudlet 73 received
+88.722: Broker: Cloudlet 58 received
+89.714: Broker: Cloudlet 20 received
+90.262: Broker: Cloudlet 81 received
+91.074: Broker: Cloudlet 3 received
+92.542: Broker: Cloudlet 28 received
+93.37755555555556: Broker: Cloudlet 33 received
+93.65526984126984: Broker: Cloudlet 9 received
+93.95926984126984: Broker: Cloudlet 22 received
+94.71526984126984: Broker: Cloudlet 94 received
+94.88860317460318: Broker: Cloudlet 1 received
+95.32415873015873: Broker: Cloudlet 82 received
+95.43415873015873: Broker: Cloudlet 37 received
+95.89815873015873: Broker: Cloudlet 38 received
+96.45415873015872: Broker: Cloudlet 95 received
+96.88915873015873: Broker: Cloudlet 78 received
+98.34871428571428: Broker: Cloudlet 31 received
+98.45871428571428: Broker: Cloudlet 43 received
+98.86671428571428: Broker: Cloudlet 0 received
+99.35871428571429: Broker: Cloudlet 84 received
+99.53871428571429: Broker: Cloudlet 23 received
+99.64871428571429: Broker: Cloudlet 88 received
+100.12338095238096: Broker: Cloudlet 42 received
+100.692: Broker: Cloudlet 50 received
+100.692: Broker: Cloudlet 39 received
+101.514: Broker: Cloudlet 49 received
+102.342: Broker: Cloudlet 51 received
+102.504: Broker: Cloudlet 86 received
+102.614: Broker: Cloudlet 98 received
+102.724: Broker: Cloudlet 74 received
+102.724: Broker: Cloudlet 29 received
+102.976: Broker: Cloudlet 53 received
+103.086: Broker: Cloudlet 96 received
+103.086: Broker: Cloudlet 65 received
+103.3772: Broker: Cloudlet 57 received
+103.4872: Broker: Cloudlet 99 received
+103.4872: Broker: Cloudlet 56 received
+103.5992: Broker: Cloudlet 48 received
+103.7932: Broker: Cloudlet 26 received
+103.9772: Broker: Cloudlet 47 received
+104.0872: Broker: Cloudlet 89 received
+104.1972: Broker: Cloudlet 24 received
+104.3072: Broker: Cloudlet 77 received
+104.3072: Broker: All Cloudlets executed. Finishing...
+104.3072: Broker: Destroying VM #0
+104.3072: Broker: Destroying VM #1
+104.3072: Broker: Destroying VM #2
+104.3072: Broker: Destroying VM #3
+104.3072: Broker: Destroying VM #4
+104.3072: Broker: Destroying VM #5
+104.3072: Broker: Destroying VM #6
+104.3072: Broker: Destroying VM #7
+104.3072: Broker: Destroying VM #8
+104.3072: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 104.31              
+50 Particles   Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #7
+0.1: Broker: Sending cloudlet 1 to VM #1
+0.1: Broker: Sending cloudlet 2 to VM #9
+0.1: Broker: Sending cloudlet 3 to VM #2
+0.1: Broker: Sending cloudlet 4 to VM #3
+0.1: Broker: Sending cloudlet 5 to VM #1
+0.1: Broker: Sending cloudlet 6 to VM #5
+0.1: Broker: Sending cloudlet 7 to VM #3
+0.1: Broker: Sending cloudlet 8 to VM #3
+0.1: Broker: Sending cloudlet 9 to VM #8
+0.1: Broker: Sending cloudlet 10 to VM #1
+0.1: Broker: Sending cloudlet 11 to VM #7
+0.1: Broker: Sending cloudlet 12 to VM #8
+0.1: Broker: Sending cloudlet 13 to VM #7
+0.1: Broker: Sending cloudlet 14 to VM #3
+0.1: Broker: Sending cloudlet 15 to VM #5
+0.1: Broker: Sending cloudlet 16 to VM #5
+0.1: Broker: Sending cloudlet 17 to VM #8
+0.1: Broker: Sending cloudlet 18 to VM #1
+0.1: Broker: Sending cloudlet 19 to VM #1
+0.1: Broker: Sending cloudlet 20 to VM #1
+0.1: Broker: Sending cloudlet 21 to VM #4
+0.1: Broker: Sending cloudlet 22 to VM #1
+0.1: Broker: Sending cloudlet 23 to VM #1
+0.1: Broker: Sending cloudlet 24 to VM #4
+0.1: Broker: Sending cloudlet 25 to VM #0
+0.1: Broker: Sending cloudlet 26 to VM #5
+0.1: Broker: Sending cloudlet 27 to VM #2
+0.1: Broker: Sending cloudlet 28 to VM #6
+0.1: Broker: Sending cloudlet 29 to VM #3
+0.1: Broker: Sending cloudlet 30 to VM #4
+0.1: Broker: Sending cloudlet 31 to VM #6
+0.1: Broker: Sending cloudlet 32 to VM #2
+0.1: Broker: Sending cloudlet 33 to VM #8
+0.1: Broker: Sending cloudlet 34 to VM #8
+0.1: Broker: Sending cloudlet 35 to VM #4
+0.1: Broker: Sending cloudlet 36 to VM #0
+0.1: Broker: Sending cloudlet 37 to VM #4
+0.1: Broker: Sending cloudlet 38 to VM #2
+0.1: Broker: Sending cloudlet 39 to VM #5
+0.1: Broker: Sending cloudlet 40 to VM #5
+0.1: Broker: Sending cloudlet 41 to VM #4
+0.1: Broker: Sending cloudlet 42 to VM #2
+0.1: Broker: Sending cloudlet 43 to VM #5
+0.1: Broker: Sending cloudlet 44 to VM #5
+0.1: Broker: Sending cloudlet 45 to VM #0
+0.1: Broker: Sending cloudlet 46 to VM #4
+0.1: Broker: Sending cloudlet 47 to VM #6
+0.1: Broker: Sending cloudlet 48 to VM #1
+0.1: Broker: Sending cloudlet 49 to VM #1
+0.1: Broker: Sending cloudlet 50 to VM #5
+0.1: Broker: Sending cloudlet 51 to VM #8
+0.1: Broker: Sending cloudlet 52 to VM #1
+0.1: Broker: Sending cloudlet 53 to VM #0
+0.1: Broker: Sending cloudlet 54 to VM #5
+0.1: Broker: Sending cloudlet 55 to VM #4
+0.1: Broker: Sending cloudlet 56 to VM #3
+0.1: Broker: Sending cloudlet 57 to VM #5
+0.1: Broker: Sending cloudlet 58 to VM #7
+0.1: Broker: Sending cloudlet 59 to VM #7
+0.1: Broker: Sending cloudlet 60 to VM #1
+0.1: Broker: Sending cloudlet 61 to VM #1
+0.1: Broker: Sending cloudlet 62 to VM #8
+0.1: Broker: Sending cloudlet 63 to VM #8
+0.1: Broker: Sending cloudlet 64 to VM #4
+0.1: Broker: Sending cloudlet 65 to VM #7
+0.1: Broker: Sending cloudlet 66 to VM #1
+0.1: Broker: Sending cloudlet 67 to VM #0
+0.1: Broker: Sending cloudlet 68 to VM #4
+0.1: Broker: Sending cloudlet 69 to VM #5
+0.1: Broker: Sending cloudlet 70 to VM #8
+0.1: Broker: Sending cloudlet 71 to VM #0
+0.1: Broker: Sending cloudlet 72 to VM #9
+0.1: Broker: Sending cloudlet 73 to VM #7
+0.1: Broker: Sending cloudlet 74 to VM #2
+0.1: Broker: Sending cloudlet 75 to VM #5
+0.1: Broker: Sending cloudlet 76 to VM #7
+0.1: Broker: Sending cloudlet 77 to VM #0
+0.1: Broker: Sending cloudlet 78 to VM #2
+0.1: Broker: Sending cloudlet 79 to VM #9
+0.1: Broker: Sending cloudlet 80 to VM #3
+0.1: Broker: Sending cloudlet 81 to VM #6
+0.1: Broker: Sending cloudlet 82 to VM #3
+0.1: Broker: Sending cloudlet 83 to VM #0
+0.1: Broker: Sending cloudlet 84 to VM #8
+0.1: Broker: Sending cloudlet 85 to VM #7
+0.1: Broker: Sending cloudlet 86 to VM #5
+0.1: Broker: Sending cloudlet 87 to VM #8
+0.1: Broker: Sending cloudlet 88 to VM #3
+0.1: Broker: Sending cloudlet 89 to VM #6
+0.1: Broker: Sending cloudlet 90 to VM #9
+0.1: Broker: Sending cloudlet 91 to VM #5
+0.1: Broker: Sending cloudlet 92 to VM #4
+0.1: Broker: Sending cloudlet 93 to VM #5
+0.1: Broker: Sending cloudlet 94 to VM #1
+0.1: Broker: Sending cloudlet 95 to VM #3
+0.1: Broker: Sending cloudlet 96 to VM #7
+0.1: Broker: Sending cloudlet 97 to VM #2
+0.1: Broker: Sending cloudlet 98 to VM #2
+0.1: Broker: Sending cloudlet 99 to VM #4
+7.371599999999999: Broker: Cloudlet 61 received
+7.4792: Broker: Cloudlet 93 received
+8.152: Broker: Cloudlet 42 received
+9.7485: Broker: Cloudlet 4 received
+11.128499999999999: Broker: Cloudlet 0 received
+11.651166666666665: Broker: Cloudlet 66 received
+11.761166666666664: Broker: Cloudlet 62 received
+13.649999999999999: Broker: Cloudlet 54 received
+16.997600000000002: Broker: Cloudlet 72 received
+17.727200000000003: Broker: Cloudlet 98 received
+20.428000000000004: Broker: Cloudlet 77 received
+22.011600000000005: Broker: Cloudlet 24 received
+23.799600000000005: Broker: Cloudlet 65 received
+24.227155555555562: Broker: Cloudlet 48 received
+24.778666666666666: Broker: Cloudlet 7 received
+25.078666666666667: Broker: Cloudlet 47 received
+25.58152380952381: Broker: Cloudlet 33 received
+27.160400000000003: Broker: Cloudlet 43 received
+27.990900000000003: Broker: Cloudlet 41 received
+28.908233333333335: Broker: Cloudlet 18 received
+30.334800000000005: Broker: Cloudlet 45 received
+30.444800000000008: Broker: Cloudlet 69 received
+31.865555555555563: Broker: Cloudlet 38 received
+32.61222222222223: Broker: Cloudlet 29 received
+33.018507936507945: Broker: Cloudlet 17 received
+33.551841269841276: Broker: Cloudlet 85 received
+35.54288888888889: Broker: Cloudlet 68 received
+36.93377777777778: Broker: Cloudlet 52 received
+38.373777777777775: Broker: Cloudlet 6 received
+40.49644444444444: Broker: Cloudlet 28 received
+40.62244444444444: Broker: Cloudlet 90 received
+41.118: Broker: Cloudlet 32 received
+41.449200000000005: Broker: Cloudlet 25 received
+41.64053333333334: Broker: Cloudlet 59 received
+42.534333333333336: Broker: Cloudlet 82 received
+45.021190476190476: Broker: Cloudlet 34 received
+45.84919047619048: Broker: Cloudlet 55 received
+47.208444444444446: Broker: Cloudlet 60 received
+48.42724444444445: Broker: Cloudlet 50 received
+48.86324444444445: Broker: Cloudlet 64 received
+49.431244444444445: Broker: Cloudlet 44 received
+50.72324444444445: Broker: Cloudlet 9 received
+50.833244444444446: Broker: Cloudlet 5 received
+52.605599999999995: Broker: Cloudlet 56 received
+53.185599999999994: Broker: Cloudlet 58 received
+54.657999999999994: Broker: Cloudlet 15 received
+55.230000000000004: Broker: Cloudlet 71 received
+55.438: Broker: Cloudlet 74 received
+56.75: Broker: Cloudlet 22 received
+57.2435: Broker: Cloudlet 46 received
+57.3535: Broker: Cloudlet 81 received
+57.463499999999996: Broker: Cloudlet 51 received
+58.05533333333334: Broker: Cloudlet 91 received
+58.355333333333334: Broker: Cloudlet 80 received
+58.72866666666667: Broker: Cloudlet 11 received
+59.36955555555556: Broker: Cloudlet 19 received
+59.58555555555556: Broker: Cloudlet 37 received
+60.182698412698414: Broker: Cloudlet 12 received
+60.292698412698414: Broker: Cloudlet 67 received
+60.40269841269841: Broker: Cloudlet 78 received
+60.51269841269841: Broker: Cloudlet 86 received
+60.81269841269841: Broker: Cloudlet 2 received
+61.04736507936508: Broker: Cloudlet 20 received
+61.42266666666667: Broker: Cloudlet 8 received
+61.79016666666667: Broker: Cloudlet 35 received
+62.032833333333336: Broker: Cloudlet 73 received
+62.142833333333336: Broker: Cloudlet 40 received
+62.70969047619048: Broker: Cloudlet 84 received
+63.50524603174604: Broker: Cloudlet 10 received
+63.61524603174604: Broker: Cloudlet 16 received
+63.81924603174604: Broker: Cloudlet 99 received
+63.92924603174604: Broker: Cloudlet 36 received
+63.92924603174604: Broker: Cloudlet 27 received
+64.03924603174605: Broker: Cloudlet 31 received
+64.34724603174605: Broker: Cloudlet 14 received
+64.71124603174606: Broker: Cloudlet 13 received
+64.8741031746032: Broker: Cloudlet 70 received
+65.0109920634921: Broker: Cloudlet 94 received
+65.1997920634921: Broker: Cloudlet 39 received
+66.4147920634921: Broker: Cloudlet 30 received
+66.6723920634921: Broker: Cloudlet 83 received
+67.0003920634921: Broker: Cloudlet 49 received
+67.3203920634921: Broker: Cloudlet 95 received
+67.43039206349209: Broker: Cloudlet 97 received
+67.54039206349209: Broker: Cloudlet 26 received
+67.65039206349209: Broker: Cloudlet 87 received
+67.82505873015876: Broker: Cloudlet 76 received
+68.01605873015876: Broker: Cloudlet 21 received
+68.16325873015876: Broker: Cloudlet 57 received
+68.27881428571432: Broker: Cloudlet 1 received
+68.58167142857147: Broker: Cloudlet 63 received
+68.69167142857147: Broker: Cloudlet 53 received
+68.80167142857147: Broker: Cloudlet 92 received
+68.80167142857147: Broker: Cloudlet 89 received
+68.80167142857147: Broker: Cloudlet 79 received
+68.91167142857147: Broker: Cloudlet 88 received
+68.91167142857147: Broker: Cloudlet 75 received
+68.91167142857147: Broker: Cloudlet 96 received
+69.10056031746035: Broker: Cloudlet 23 received
+69.21056031746035: Broker: Cloudlet 3 received
+69.21056031746035: Broker: All Cloudlets executed. Finishing...
+69.21056031746035: Broker: Destroying VM #0
+69.21056031746035: Broker: Destroying VM #1
+69.21056031746035: Broker: Destroying VM #2
+69.21056031746035: Broker: Destroying VM #3
+69.21056031746035: Broker: Destroying VM #4
+69.21056031746035: Broker: Destroying VM #5
+69.21056031746035: Broker: Destroying VM #6
+69.21056031746035: Broker: Destroying VM #7
+69.21056031746035: Broker: Destroying VM #8
+69.21056031746035: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 69.21               Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #4
+0.1: Broker: Sending cloudlet 1 to VM #3
+0.1: Broker: Sending cloudlet 2 to VM #2
+0.1: Broker: Sending cloudlet 3 to VM #7
+0.1: Broker: Sending cloudlet 4 to VM #5
+0.1: Broker: Sending cloudlet 5 to VM #6
+0.1: Broker: Sending cloudlet 6 to VM #7
+0.1: Broker: Sending cloudlet 7 to VM #6
+0.1: Broker: Sending cloudlet 8 to VM #3
+0.1: Broker: Sending cloudlet 9 to VM #4
+0.1: Broker: Sending cloudlet 10 to VM #0
+0.1: Broker: Sending cloudlet 11 to VM #8
+0.1: Broker: Sending cloudlet 12 to VM #2
+0.1: Broker: Sending cloudlet 13 to VM #5
+0.1: Broker: Sending cloudlet 14 to VM #9
+0.1: Broker: Sending cloudlet 15 to VM #0
+0.1: Broker: Sending cloudlet 16 to VM #1
+0.1: Broker: Sending cloudlet 17 to VM #3
+0.1: Broker: Sending cloudlet 18 to VM #8
+0.1: Broker: Sending cloudlet 19 to VM #3
+0.1: Broker: Sending cloudlet 20 to VM #0
+0.1: Broker: Sending cloudlet 21 to VM #8
+0.1: Broker: Sending cloudlet 22 to VM #6
+0.1: Broker: Sending cloudlet 23 to VM #7
+0.1: Broker: Sending cloudlet 24 to VM #5
+0.1: Broker: Sending cloudlet 25 to VM #6
+0.1: Broker: Sending cloudlet 26 to VM #2
+0.1: Broker: Sending cloudlet 27 to VM #7
+0.1: Broker: Sending cloudlet 28 to VM #7
+0.1: Broker: Sending cloudlet 29 to VM #8
+0.1: Broker: Sending cloudlet 30 to VM #6
+0.1: Broker: Sending cloudlet 31 to VM #3
+0.1: Broker: Sending cloudlet 32 to VM #6
+0.1: Broker: Sending cloudlet 33 to VM #5
+0.1: Broker: Sending cloudlet 34 to VM #0
+0.1: Broker: Sending cloudlet 35 to VM #1
+0.1: Broker: Sending cloudlet 36 to VM #5
+0.1: Broker: Sending cloudlet 37 to VM #5
+0.1: Broker: Sending cloudlet 38 to VM #9
+0.1: Broker: Sending cloudlet 39 to VM #9
+0.1: Broker: Sending cloudlet 40 to VM #5
+0.1: Broker: Sending cloudlet 41 to VM #6
+0.1: Broker: Sending cloudlet 42 to VM #9
+0.1: Broker: Sending cloudlet 43 to VM #4
+0.1: Broker: Sending cloudlet 44 to VM #3
+0.1: Broker: Sending cloudlet 45 to VM #2
+0.1: Broker: Sending cloudlet 46 to VM #1
+0.1: Broker: Sending cloudlet 47 to VM #2
+0.1: Broker: Sending cloudlet 48 to VM #9
+0.1: Broker: Sending cloudlet 49 to VM #2
+0.1: Broker: Sending cloudlet 50 to VM #2
+0.1: Broker: Sending cloudlet 51 to VM #7
+0.1: Broker: Sending cloudlet 52 to VM #4
+0.1: Broker: Sending cloudlet 53 to VM #9
+0.1: Broker: Sending cloudlet 54 to VM #5
+0.1: Broker: Sending cloudlet 55 to VM #0
+0.1: Broker: Sending cloudlet 56 to VM #0
+0.1: Broker: Sending cloudlet 57 to VM #0
+0.1: Broker: Sending cloudlet 58 to VM #2
+0.1: Broker: Sending cloudlet 59 to VM #7
+0.1: Broker: Sending cloudlet 60 to VM #7
+0.1: Broker: Sending cloudlet 61 to VM #4
+0.1: Broker: Sending cloudlet 62 to VM #5
+0.1: Broker: Sending cloudlet 63 to VM #3
+0.1: Broker: Sending cloudlet 64 to VM #1
+0.1: Broker: Sending cloudlet 65 to VM #0
+0.1: Broker: Sending cloudlet 66 to VM #7
+0.1: Broker: Sending cloudlet 67 to VM #6
+0.1: Broker: Sending cloudlet 68 to VM #7
+0.1: Broker: Sending cloudlet 69 to VM #3
+0.1: Broker: Sending cloudlet 70 to VM #6
+0.1: Broker: Sending cloudlet 71 to VM #4
+0.1: Broker: Sending cloudlet 72 to VM #7
+0.1: Broker: Sending cloudlet 73 to VM #3
+0.1: Broker: Sending cloudlet 74 to VM #5
+0.1: Broker: Sending cloudlet 75 to VM #0
+0.1: Broker: Sending cloudlet 76 to VM #8
+0.1: Broker: Sending cloudlet 77 to VM #4
+0.1: Broker: Sending cloudlet 78 to VM #1
+0.1: Broker: Sending cloudlet 79 to VM #1
+0.1: Broker: Sending cloudlet 80 to VM #4
+0.1: Broker: Sending cloudlet 81 to VM #1
+0.1: Broker: Sending cloudlet 82 to VM #3
+0.1: Broker: Sending cloudlet 83 to VM #4
+0.1: Broker: Sending cloudlet 84 to VM #2
+0.1: Broker: Sending cloudlet 85 to VM #6
+0.1: Broker: Sending cloudlet 86 to VM #4
+0.1: Broker: Sending cloudlet 87 to VM #0
+0.1: Broker: Sending cloudlet 88 to VM #4
+0.1: Broker: Sending cloudlet 89 to VM #5
+0.1: Broker: Sending cloudlet 90 to VM #5
+0.1: Broker: Sending cloudlet 91 to VM #5
+0.1: Broker: Sending cloudlet 92 to VM #2
+0.1: Broker: Sending cloudlet 93 to VM #1
+0.1: Broker: Sending cloudlet 94 to VM #4
+0.1: Broker: Sending cloudlet 95 to VM #2
+0.1: Broker: Sending cloudlet 96 to VM #0
+0.1: Broker: Sending cloudlet 97 to VM #0
+0.1: Broker: Sending cloudlet 98 to VM #3
+0.1: Broker: Sending cloudlet 99 to VM #1
+7.0335: Broker: Cloudlet 2 received
+9.658: Broker: Cloudlet 59 received
+13.338142857142858: Broker: Cloudlet 82 received
+14.874142857142857: Broker: Cloudlet 57 received
+18.677333333333337: Broker: Cloudlet 43 received
+19.608857142857147: Broker: Cloudlet 4 received
+20.602500000000003: Broker: Cloudlet 78 received
+20.712500000000006: Broker: Cloudlet 38 received
+20.912500000000005: Broker: Cloudlet 70 received
+22.167809523809524: Broker: Cloudlet 63 received
+22.282095238095238: Broker: Cloudlet 84 received
+22.663333333333338: Broker: Cloudlet 18 received
+23.26333333333334: Broker: Cloudlet 28 received
+23.818833333333338: Broker: Cloudlet 52 received
+26.188285714285715: Broker: Cloudlet 15 received
+26.29828571428572: Broker: Cloudlet 33 received
+27.56761904761905: Broker: Cloudlet 46 received
+29.165714285714287: Broker: Cloudlet 47 received
+30.566857142857145: Broker: Cloudlet 31 received
+30.911428571428573: Broker: Cloudlet 66 received
+32.798857142857145: Broker: Cloudlet 85 received
+34.21228571428571: Broker: Cloudlet 88 received
+34.32961904761905: Broker: Cloudlet 13 received
+34.43961904761905: Broker: Cloudlet 34 received
+38.037333333333336: Broker: Cloudlet 25 received
+38.147333333333336: Broker: Cloudlet 16 received
+38.32233333333333: Broker: Cloudlet 42 received
+38.43233333333333: Broker: Cloudlet 21 received
+38.59233333333333: Broker: Cloudlet 6 received
+40.43919047619047: Broker: Cloudlet 49 received
+40.54919047619047: Broker: Cloudlet 17 received
+41.14233333333333: Broker: Cloudlet 87 received
+41.33788888888889: Broker: Cloudlet 40 received
+41.48188888888889: Broker: Cloudlet 62 received
+41.75638888888889: Broker: Cloudlet 61 received
+42.25142857142857: Broker: Cloudlet 55 received
+42.51142857142857: Broker: Cloudlet 32 received
+43.131428571428565: Broker: Cloudlet 23 received
+43.311428571428564: Broker: Cloudlet 80 received
+44.05942857142856: Broker: Cloudlet 50 received
+44.387428571428565: Broker: Cloudlet 1 received
+45.231428571428566: Broker: Cloudlet 81 received
+48.25142857142857: Broker: Cloudlet 39 received
+49.36431746031746: Broker: Cloudlet 36 received
+50.677460317460316: Broker: Cloudlet 12 received
+50.79996031746032: Broker: Cloudlet 20 received
+51.08696031746032: Broker: Cloudlet 9 received
+51.29953174603175: Broker: Cloudlet 41 received
+51.6046746031746: Broker: Cloudlet 98 received
+51.97533333333333: Broker: Cloudlet 29 received
+52.2907619047619: Broker: Cloudlet 72 received
+52.4007619047619: Broker: Cloudlet 54 received
+52.677428571428564: Broker: Cloudlet 64 received
+53.412: Broker: Cloudlet 56 received
+53.835: Broker: Cloudlet 77 received
+54.480714285714285: Broker: Cloudlet 5 received
+54.590714285714284: Broker: Cloudlet 92 received
+55.07257142857143: Broker: Cloudlet 48 received
+55.18257142857143: Broker: Cloudlet 73 received
+55.49971428571428: Broker: Cloudlet 60 received
+55.64371428571428: Broker: Cloudlet 91 received
+57.10238095238095: Broker: Cloudlet 35 received
+57.66488095238095: Broker: Cloudlet 83 received
+58.60738095238095: Broker: Cloudlet 65 received
+58.92966666666666: Broker: Cloudlet 7 received
+59.25942857142858: Broker: Cloudlet 51 received
+59.952761904761914: Broker: Cloudlet 90 received
+60.15161904761906: Broker: Cloudlet 95 received
+60.42076190476192: Broker: Cloudlet 30 received
+60.53076190476192: Broker: Cloudlet 75 received
+60.53076190476192: Broker: Cloudlet 69 received
+60.53076190476192: Broker: Cloudlet 94 received
+60.640761904761916: Broker: Cloudlet 14 received
+60.76520634920636: Broker: Cloudlet 24 received
+61.07920634920636: Broker: Cloudlet 93 received
+61.26263492063493: Broker: Cloudlet 27 received
+61.37263492063493: Broker: Cloudlet 45 received
+61.725777777777786: Broker: Cloudlet 19 received
+61.87511111111112: Broker: Cloudlet 76 received
+62.00844444444445: Broker: Cloudlet 89 received
+62.27844444444445: Broker: Cloudlet 86 received
+62.38844444444445: Broker: Cloudlet 10 received
+62.73777777777779: Broker: Cloudlet 99 received
+62.847777777777786: Broker: Cloudlet 67 received
+62.957777777777785: Broker: Cloudlet 58 received
+63.5040634920635: Broker: Cloudlet 8 received
+63.6140634920635: Broker: Cloudlet 68 received
+63.7480634920635: Broker: Cloudlet 97 received
+64.0780634920635: Broker: Cloudlet 53 received
+64.1880634920635: Broker: Cloudlet 0 received
+64.1880634920635: Broker: Cloudlet 74 received
+64.2980634920635: Broker: Cloudlet 79 received
+64.2980634920635: Broker: Cloudlet 22 received
+64.75314285714285: Broker: Cloudlet 26 received
+64.95885714285713: Broker: Cloudlet 3 received
+65.06885714285713: Broker: Cloudlet 37 received
+65.22285714285712: Broker: Cloudlet 96 received
+65.33285714285712: Broker: Cloudlet 44 received
+65.44285714285712: Broker: Cloudlet 71 received
+65.55285714285712: Broker: Cloudlet 11 received
+65.55285714285712: Broker: All Cloudlets executed. Finishing...
+65.55285714285712: Broker: Destroying VM #0
+65.55285714285712: Broker: Destroying VM #1
+65.55285714285712: Broker: Destroying VM #2
+65.55285714285712: Broker: Destroying VM #3
+65.55285714285712: Broker: Destroying VM #4
+65.55285714285712: Broker: Destroying VM #5
+65.55285714285712: Broker: Destroying VM #6
+65.55285714285712: Broker: Destroying VM #7
+65.55285714285712: Broker: Destroying VM #8
+65.55285714285712: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 65.55               Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #7
+0.1: Broker: Sending cloudlet 1 to VM #1
+0.1: Broker: Sending cloudlet 2 to VM #7
+0.1: Broker: Sending cloudlet 3 to VM #4
+0.1: Broker: Sending cloudlet 4 to VM #5
+0.1: Broker: Sending cloudlet 5 to VM #6
+0.1: Broker: Sending cloudlet 6 to VM #0
+0.1: Broker: Sending cloudlet 7 to VM #3
+0.1: Broker: Sending cloudlet 8 to VM #1
+0.1: Broker: Sending cloudlet 9 to VM #7
+0.1: Broker: Sending cloudlet 10 to VM #6
+0.1: Broker: Sending cloudlet 11 to VM #9
+0.1: Broker: Sending cloudlet 12 to VM #4
+0.1: Broker: Sending cloudlet 13 to VM #4
+0.1: Broker: Sending cloudlet 14 to VM #8
+0.1: Broker: Sending cloudlet 15 to VM #6
+0.1: Broker: Sending cloudlet 16 to VM #9
+0.1: Broker: Sending cloudlet 17 to VM #3
+0.1: Broker: Sending cloudlet 18 to VM #6
+0.1: Broker: Sending cloudlet 19 to VM #9
+0.1: Broker: Sending cloudlet 20 to VM #3
+0.1: Broker: Sending cloudlet 21 to VM #4
+0.1: Broker: Sending cloudlet 22 to VM #2
+0.1: Broker: Sending cloudlet 23 to VM #3
+0.1: Broker: Sending cloudlet 24 to VM #9
+0.1: Broker: Sending cloudlet 25 to VM #6
+0.1: Broker: Sending cloudlet 26 to VM #1
+0.1: Broker: Sending cloudlet 27 to VM #1
+0.1: Broker: Sending cloudlet 28 to VM #9
+0.1: Broker: Sending cloudlet 29 to VM #2
+0.1: Broker: Sending cloudlet 30 to VM #1
+0.1: Broker: Sending cloudlet 31 to VM #6
+0.1: Broker: Sending cloudlet 32 to VM #6
+0.1: Broker: Sending cloudlet 33 to VM #7
+0.1: Broker: Sending cloudlet 34 to VM #7
+0.1: Broker: Sending cloudlet 35 to VM #4
+0.1: Broker: Sending cloudlet 36 to VM #1
+0.1: Broker: Sending cloudlet 37 to VM #5
+0.1: Broker: Sending cloudlet 38 to VM #8
+0.1: Broker: Sending cloudlet 39 to VM #4
+0.1: Broker: Sending cloudlet 40 to VM #3
+0.1: Broker: Sending cloudlet 41 to VM #2
+0.1: Broker: Sending cloudlet 42 to VM #6
+0.1: Broker: Sending cloudlet 43 to VM #7
+0.1: Broker: Sending cloudlet 44 to VM #2
+0.1: Broker: Sending cloudlet 45 to VM #4
+0.1: Broker: Sending cloudlet 46 to VM #1
+0.1: Broker: Sending cloudlet 47 to VM #4
+0.1: Broker: Sending cloudlet 48 to VM #2
+0.1: Broker: Sending cloudlet 49 to VM #2
+0.1: Broker: Sending cloudlet 50 to VM #0
+0.1: Broker: Sending cloudlet 51 to VM #4
+0.1: Broker: Sending cloudlet 52 to VM #7
+0.1: Broker: Sending cloudlet 53 to VM #8
+0.1: Broker: Sending cloudlet 54 to VM #1
+0.1: Broker: Sending cloudlet 55 to VM #9
+0.1: Broker: Sending cloudlet 56 to VM #2
+0.1: Broker: Sending cloudlet 57 to VM #9
+0.1: Broker: Sending cloudlet 58 to VM #9
+0.1: Broker: Sending cloudlet 59 to VM #6
+0.1: Broker: Sending cloudlet 60 to VM #1
+0.1: Broker: Sending cloudlet 61 to VM #1
+0.1: Broker: Sending cloudlet 62 to VM #5
+0.1: Broker: Sending cloudlet 63 to VM #2
+0.1: Broker: Sending cloudlet 64 to VM #1
+0.1: Broker: Sending cloudlet 65 to VM #1
+0.1: Broker: Sending cloudlet 66 to VM #0
+0.1: Broker: Sending cloudlet 67 to VM #2
+0.1: Broker: Sending cloudlet 68 to VM #7
+0.1: Broker: Sending cloudlet 69 to VM #1
+0.1: Broker: Sending cloudlet 70 to VM #2
+0.1: Broker: Sending cloudlet 71 to VM #7
+0.1: Broker: Sending cloudlet 72 to VM #4
+0.1: Broker: Sending cloudlet 73 to VM #2
+0.1: Broker: Sending cloudlet 74 to VM #2
+0.1: Broker: Sending cloudlet 75 to VM #3
+0.1: Broker: Sending cloudlet 76 to VM #9
+0.1: Broker: Sending cloudlet 77 to VM #8
+0.1: Broker: Sending cloudlet 78 to VM #2
+0.1: Broker: Sending cloudlet 79 to VM #1
+0.1: Broker: Sending cloudlet 80 to VM #7
+0.1: Broker: Sending cloudlet 81 to VM #0
+0.1: Broker: Sending cloudlet 82 to VM #9
+0.1: Broker: Sending cloudlet 83 to VM #3
+0.1: Broker: Sending cloudlet 84 to VM #0
+0.1: Broker: Sending cloudlet 85 to VM #5
+0.1: Broker: Sending cloudlet 86 to VM #4
+0.1: Broker: Sending cloudlet 87 to VM #6
+0.1: Broker: Sending cloudlet 88 to VM #6
+0.1: Broker: Sending cloudlet 89 to VM #9
+0.1: Broker: Sending cloudlet 90 to VM #2
+0.1: Broker: Sending cloudlet 91 to VM #7
+0.1: Broker: Sending cloudlet 92 to VM #4
+0.1: Broker: Sending cloudlet 93 to VM #9
+0.1: Broker: Sending cloudlet 94 to VM #6
+0.1: Broker: Sending cloudlet 95 to VM #2
+0.1: Broker: Sending cloudlet 96 to VM #1
+0.1: Broker: Sending cloudlet 97 to VM #0
+0.1: Broker: Sending cloudlet 98 to VM #0
+0.1: Broker: Sending cloudlet 99 to VM #2
+7.325333333333333: Broker: Cloudlet 41 received
+10.315999999999999: Broker: Cloudlet 46 received
+11.041999999999998: Broker: Cloudlet 0 received
+12.112999999999998: Broker: Cloudlet 54 received
+17.566000000000006: Broker: Cloudlet 14 received
+21.152: Broker: Cloudlet 89 received
+21.728: Broker: Cloudlet 88 received
+22.576285714285717: Broker: Cloudlet 45 received
+23.64266666666667: Broker: Cloudlet 44 received
+24.210666666666672: Broker: Cloudlet 85 received
+24.763666666666673: Broker: Cloudlet 84 received
+25.876: Broker: Cloudlet 17 received
+26.006666666666668: Broker: Cloudlet 29 received
+26.26666666666667: Broker: Cloudlet 71 received
+26.39016666666667: Broker: Cloudlet 79 received
+27.685023809523813: Broker: Cloudlet 39 received
+29.187309523809528: Broker: Cloudlet 76 received
+29.29730952380953: Broker: Cloudlet 15 received
+29.65730952380953: Broker: Cloudlet 27 received
+32.45375396825398: Broker: Cloudlet 48 received
+33.10175396825398: Broker: Cloudlet 34 received
+34.106: Broker: Cloudlet 83 received
+36.3: Broker: Cloudlet 98 received
+39.13428571428571: Broker: Cloudlet 35 received
+39.34571428571428: Broker: Cloudlet 87 received
+40.13428571428571: Broker: Cloudlet 11 received
+40.50257142857143: Broker: Cloudlet 96 received
+45.3528888888889: Broker: Cloudlet 78 received
+47.26755555555557: Broker: Cloudlet 68 received
+48.898: Broker: Cloudlet 77 received
+49.204: Broker: Cloudlet 37 received
+50.20171428571429: Broker: Cloudlet 3 received
+50.644000000000005: Broker: Cloudlet 10 received
+50.754000000000005: Broker: Cloudlet 67 received
+50.864000000000004: Broker: Cloudlet 57 received
+50.974000000000004: Broker: Cloudlet 8 received
+51.279: Broker: Cloudlet 40 received
+52.459: Broker: Cloudlet 50 received
+52.809000000000005: Broker: Cloudlet 91 received
+52.98271428571429: Broker: Cloudlet 58 received
+53.859: Broker: Cloudlet 32 received
+55.102428571428575: Broker: Cloudlet 51 received
+56.7885: Broker: Cloudlet 69 received
+58.34749206349206: Broker: Cloudlet 63 received
+59.03949206349206: Broker: Cloudlet 70 received
+59.895492063492064: Broker: Cloudlet 1 received
+60.739492063492065: Broker: Cloudlet 72 received
+61.62749206349206: Broker: Cloudlet 31 received
+62.21149206349207: Broker: Cloudlet 24 received
+63.987: Broker: Cloudlet 43 received
+65.71666666666665: Broker: Cloudlet 97 received
+67.36288888888888: Broker: Cloudlet 22 received
+67.59488888888887: Broker: Cloudlet 20 received
+68.07088888888887: Broker: Cloudlet 64 received
+68.24231746031745: Broker: Cloudlet 28 received
+69.30860317460316: Broker: Cloudlet 12 received
+69.7611746031746: Broker: Cloudlet 5 received
+70.0051746031746: Broker: Cloudlet 38 received
+70.2042857142857: Broker: Cloudlet 90 received
+70.79383333333332: Broker: Cloudlet 33 received
+71.00183333333332: Broker: Cloudlet 4 received
+71.47583333333333: Broker: Cloudlet 60 received
+72.16799999999999: Broker: Cloudlet 23 received
+72.27799999999999: Broker: Cloudlet 92 received
+72.38799999999999: Broker: Cloudlet 6 received
+72.49799999999999: Broker: Cloudlet 94 received
+73.29771428571428: Broker: Cloudlet 16 received
+73.43371428571427: Broker: Cloudlet 99 received
+74.75371428571427: Broker: Cloudlet 2 received
+75.52171428571427: Broker: Cloudlet 19 received
+75.63171428571427: Broker: Cloudlet 65 received
+75.79171428571426: Broker: Cloudlet 18 received
+76.0385714285714: Broker: Cloudlet 47 received
+76.37412698412696: Broker: Cloudlet 49 received
+76.86012698412696: Broker: Cloudlet 66 received
+76.97012698412696: Broker: Cloudlet 30 received
+76.97012698412696: Broker: Cloudlet 7 received
+77.15412698412696: Broker: Cloudlet 80 received
+77.43323809523807: Broker: Cloudlet 95 received
+77.54323809523807: Broker: Cloudlet 55 received
+77.80123809523806: Broker: Cloudlet 53 received
+77.97266666666664: Broker: Cloudlet 86 received
+78.08266666666664: Broker: Cloudlet 56 received
+78.08266666666664: Broker: Cloudlet 25 received
+78.22095238095235: Broker: Cloudlet 13 received
+78.33095238095235: Broker: Cloudlet 61 received
+78.44095238095235: Broker: Cloudlet 59 received
+78.44095238095235: Broker: Cloudlet 52 received
+78.60395238095235: Broker: Cloudlet 81 received
+78.71395238095235: Broker: Cloudlet 75 received
+78.71395238095235: Broker: Cloudlet 82 received
+79.00895238095235: Broker: Cloudlet 36 received
+79.11895238095235: Broker: Cloudlet 73 received
+79.11895238095235: Broker: Cloudlet 21 received
+79.11895238095235: Broker: Cloudlet 93 received
+79.22895238095235: Broker: Cloudlet 62 received
+79.22895238095235: Broker: Cloudlet 42 received
+79.33895238095235: Broker: Cloudlet 9 received
+79.44895238095235: Broker: Cloudlet 26 received
+79.44895238095235: Broker: Cloudlet 74 received
+79.44895238095235: Broker: All Cloudlets executed. Finishing...
+79.44895238095235: Broker: Destroying VM #0
+79.44895238095235: Broker: Destroying VM #1
+79.44895238095235: Broker: Destroying VM #2
+79.44895238095235: Broker: Destroying VM #3
+79.44895238095235: Broker: Destroying VM #4
+79.44895238095235: Broker: Destroying VM #5
+79.44895238095235: Broker: Destroying VM #6
+79.44895238095235: Broker: Destroying VM #7
+79.44895238095235: Broker: Destroying VM #8
+79.44895238095235: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 79.45               
+100 Particles  Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #9
+0.1: Broker: Sending cloudlet 1 to VM #4
+0.1: Broker: Sending cloudlet 2 to VM #1
+0.1: Broker: Sending cloudlet 3 to VM #7
+0.1: Broker: Sending cloudlet 4 to VM #8
+0.1: Broker: Sending cloudlet 5 to VM #1
+0.1: Broker: Sending cloudlet 6 to VM #8
+0.1: Broker: Sending cloudlet 7 to VM #9
+0.1: Broker: Sending cloudlet 8 to VM #6
+0.1: Broker: Sending cloudlet 9 to VM #4
+0.1: Broker: Sending cloudlet 10 to VM #9
+0.1: Broker: Sending cloudlet 11 to VM #4
+0.1: Broker: Sending cloudlet 12 to VM #6
+0.1: Broker: Sending cloudlet 13 to VM #6
+0.1: Broker: Sending cloudlet 14 to VM #8
+0.1: Broker: Sending cloudlet 15 to VM #4
+0.1: Broker: Sending cloudlet 16 to VM #4
+0.1: Broker: Sending cloudlet 17 to VM #1
+0.1: Broker: Sending cloudlet 18 to VM #8
+0.1: Broker: Sending cloudlet 19 to VM #8
+0.1: Broker: Sending cloudlet 20 to VM #5
+0.1: Broker: Sending cloudlet 21 to VM #9
+0.1: Broker: Sending cloudlet 22 to VM #0
+0.1: Broker: Sending cloudlet 23 to VM #2
+0.1: Broker: Sending cloudlet 24 to VM #3
+0.1: Broker: Sending cloudlet 25 to VM #8
+0.1: Broker: Sending cloudlet 26 to VM #1
+0.1: Broker: Sending cloudlet 27 to VM #2
+0.1: Broker: Sending cloudlet 28 to VM #8
+0.1: Broker: Sending cloudlet 29 to VM #6
+0.1: Broker: Sending cloudlet 30 to VM #7
+0.1: Broker: Sending cloudlet 31 to VM #9
+0.1: Broker: Sending cloudlet 32 to VM #6
+0.1: Broker: Sending cloudlet 33 to VM #3
+0.1: Broker: Sending cloudlet 34 to VM #7
+0.1: Broker: Sending cloudlet 35 to VM #8
+0.1: Broker: Sending cloudlet 36 to VM #0
+0.1: Broker: Sending cloudlet 37 to VM #8
+0.1: Broker: Sending cloudlet 38 to VM #4
+0.1: Broker: Sending cloudlet 39 to VM #1
+0.1: Broker: Sending cloudlet 40 to VM #7
+0.1: Broker: Sending cloudlet 41 to VM #4
+0.1: Broker: Sending cloudlet 42 to VM #7
+0.1: Broker: Sending cloudlet 43 to VM #6
+0.1: Broker: Sending cloudlet 44 to VM #9
+0.1: Broker: Sending cloudlet 45 to VM #4
+0.1: Broker: Sending cloudlet 46 to VM #5
+0.1: Broker: Sending cloudlet 47 to VM #5
+0.1: Broker: Sending cloudlet 48 to VM #2
+0.1: Broker: Sending cloudlet 49 to VM #1
+0.1: Broker: Sending cloudlet 50 to VM #2
+0.1: Broker: Sending cloudlet 51 to VM #0
+0.1: Broker: Sending cloudlet 52 to VM #4
+0.1: Broker: Sending cloudlet 53 to VM #0
+0.1: Broker: Sending cloudlet 54 to VM #2
+0.1: Broker: Sending cloudlet 55 to VM #3
+0.1: Broker: Sending cloudlet 56 to VM #5
+0.1: Broker: Sending cloudlet 57 to VM #1
+0.1: Broker: Sending cloudlet 58 to VM #7
+0.1: Broker: Sending cloudlet 59 to VM #8
+0.1: Broker: Sending cloudlet 60 to VM #0
+0.1: Broker: Sending cloudlet 61 to VM #2
+0.1: Broker: Sending cloudlet 62 to VM #3
+0.1: Broker: Sending cloudlet 63 to VM #2
+0.1: Broker: Sending cloudlet 64 to VM #0
+0.1: Broker: Sending cloudlet 65 to VM #9
+0.1: Broker: Sending cloudlet 66 to VM #0
+0.1: Broker: Sending cloudlet 67 to VM #5
+0.1: Broker: Sending cloudlet 68 to VM #7
+0.1: Broker: Sending cloudlet 69 to VM #4
+0.1: Broker: Sending cloudlet 70 to VM #2
+0.1: Broker: Sending cloudlet 71 to VM #0
+0.1: Broker: Sending cloudlet 72 to VM #6
+0.1: Broker: Sending cloudlet 73 to VM #5
+0.1: Broker: Sending cloudlet 74 to VM #6
+0.1: Broker: Sending cloudlet 75 to VM #4
+0.1: Broker: Sending cloudlet 76 to VM #0
+0.1: Broker: Sending cloudlet 77 to VM #2
+0.1: Broker: Sending cloudlet 78 to VM #6
+0.1: Broker: Sending cloudlet 79 to VM #2
+0.1: Broker: Sending cloudlet 80 to VM #4
+0.1: Broker: Sending cloudlet 81 to VM #8
+0.1: Broker: Sending cloudlet 82 to VM #5
+0.1: Broker: Sending cloudlet 83 to VM #3
+0.1: Broker: Sending cloudlet 84 to VM #6
+0.1: Broker: Sending cloudlet 85 to VM #8
+0.1: Broker: Sending cloudlet 86 to VM #7
+0.1: Broker: Sending cloudlet 87 to VM #0
+0.1: Broker: Sending cloudlet 88 to VM #7
+0.1: Broker: Sending cloudlet 89 to VM #7
+0.1: Broker: Sending cloudlet 90 to VM #8
+0.1: Broker: Sending cloudlet 91 to VM #2
+0.1: Broker: Sending cloudlet 92 to VM #7
+0.1: Broker: Sending cloudlet 93 to VM #5
+0.1: Broker: Sending cloudlet 94 to VM #8
+0.1: Broker: Sending cloudlet 95 to VM #1
+0.1: Broker: Sending cloudlet 96 to VM #6
+0.1: Broker: Sending cloudlet 97 to VM #9
+0.1: Broker: Sending cloudlet 98 to VM #0
+0.1: Broker: Sending cloudlet 99 to VM #4
+9.532285714285713: Broker: Cloudlet 45 received
+10.790685714285713: Broker: Cloudlet 86 received
+13.6176: Broker: Cloudlet 66 received
+15.651: Broker: Cloudlet 24 received
+16.4694: Broker: Cloudlet 70 received
+20.782000000000004: Broker: Cloudlet 43 received
+21.214000000000002: Broker: Cloudlet 14 received
+22.150000000000002: Broker: Cloudlet 41 received
+23.347000000000005: Broker: Cloudlet 76 received
+24.027000000000005: Broker: Cloudlet 63 received
+25.259000000000004: Broker: Cloudlet 84 received
+30.704: Broker: Cloudlet 30 received
+32.606: Broker: Cloudlet 2 received
+35.42914285714286: Broker: Cloudlet 82 received
+36.92: Broker: Cloudlet 10 received
+37.388000000000005: Broker: Cloudlet 94 received
+39.20314285714286: Broker: Cloudlet 69 received
+40.3952: Broker: Cloudlet 61 received
+41.0576: Broker: Cloudlet 42 received
+42.4976: Broker: Cloudlet 12 received
+43.2816: Broker: Cloudlet 62 received
+43.92617142857143: Broker: Cloudlet 59 received
+44.94137142857143: Broker: Cloudlet 36 received
+45.45237142857143: Broker: Cloudlet 44 received
+47.01337142857143: Broker: Cloudlet 56 received
+51.87771428571429: Broker: Cloudlet 18 received
+52.718: Broker: Cloudlet 11 received
+53.152: Broker: Cloudlet 26 received
+53.2672: Broker: Cloudlet 79 received
+53.561600000000006: Broker: Cloudlet 34 received
+53.72800000000001: Broker: Cloudlet 98 received
+54.87400000000001: Broker: Cloudlet 52 received
+54.98400000000001: Broker: Cloudlet 13 received
+56.642: Broker: Cloudlet 17 received
+58.285428571428575: Broker: Cloudlet 6 received
+59.49142857142858: Broker: Cloudlet 65 received
+59.79942857142858: Broker: Cloudlet 27 received
+60.202628571428576: Broker: Cloudlet 32 received
+60.89702857142858: Broker: Cloudlet 3 received
+61.495200000000004: Broker: Cloudlet 87 received
+61.77120000000001: Broker: Cloudlet 20 received
+61.88120000000001: Broker: Cloudlet 4 received
+62.473200000000006: Broker: Cloudlet 38 received
+63.031200000000005: Broker: Cloudlet 83 received
+64.2612: Broker: Cloudlet 46 received
+64.4562: Broker: Cloudlet 0 received
+67.57799999999999: Broker: Cloudlet 49 received
+67.96679999999999: Broker: Cloudlet 74 received
+68.13959999999999: Broker: Cloudlet 60 received
+69.9664: Broker: Cloudlet 92 received
+71.67519999999999: Broker: Cloudlet 23 received
+72.13253333333333: Broker: Cloudlet 9 received
+73.38510476190476: Broker: Cloudlet 25 received
+74.32910476190476: Broker: Cloudlet 35 received
+75.66510476190476: Broker: Cloudlet 16 received
+76.06910476190475: Broker: Cloudlet 78 received
+76.21710476190475: Broker: Cloudlet 91 received
+76.32910476190474: Broker: Cloudlet 40 received
+77.01710476190475: Broker: Cloudlet 53 received
+77.14110476190474: Broker: Cloudlet 97 received
+77.32910476190474: Broker: Cloudlet 93 received
+78.08110476190474: Broker: Cloudlet 39 received
+78.74967619047617: Broker: Cloudlet 90 received
+79.64967619047617: Broker: Cloudlet 1 received
+80.13287619047617: Broker: Cloudlet 29 received
+80.25127619047616: Broker: Cloudlet 54 received
+80.76647619047615: Broker: Cloudlet 71 received
+81.09647619047615: Broker: Cloudlet 31 received
+81.36847619047616: Broker: Cloudlet 33 received
+81.65327619047616: Broker: Cloudlet 89 received
+81.87041904761902: Broker: Cloudlet 28 received
+81.98041904761902: Broker: Cloudlet 73 received
+82.56241904761902: Broker: Cloudlet 95 received
+83.11: Broker: Cloudlet 75 received
+83.6572: Broker: Cloudlet 58 received
+83.7672: Broker: Cloudlet 64 received
+84.7056: Broker: Cloudlet 77 received
+84.8156: Broker: Cloudlet 81 received
+85.25439999999999: Broker: Cloudlet 72 received
+85.66399999999999: Broker: Cloudlet 99 received
+85.84599999999999: Broker: Cloudlet 5 received
+87.1: Broker: Cloudlet 47 received
+87.49199999999999: Broker: Cloudlet 21 received
+87.98914285714285: Broker: Cloudlet 19 received
+88.10594285714285: Broker: Cloudlet 51 received
+88.63394285714286: Broker: Cloudlet 48 received
+88.87554285714286: Broker: Cloudlet 96 received
+88.98554285714286: Broker: Cloudlet 80 received
+89.09554285714286: Broker: Cloudlet 7 received
+89.20554285714286: Broker: Cloudlet 57 received
+89.31554285714286: Broker: Cloudlet 68 received
+89.31554285714286: Broker: Cloudlet 85 received
+89.43854285714286: Broker: Cloudlet 67 received
+89.66054285714286: Broker: Cloudlet 55 received
+89.88694285714286: Broker: Cloudlet 22 received
+90.00454285714285: Broker: Cloudlet 50 received
+90.11454285714285: Broker: Cloudlet 15 received
+90.11454285714285: Broker: Cloudlet 8 received
+90.11454285714285: Broker: Cloudlet 88 received
+90.26025714285714: Broker: Cloudlet 37 received
+90.26025714285714: Broker: All Cloudlets executed. Finishing...
+90.26025714285714: Broker: Destroying VM #0
+90.26025714285714: Broker: Destroying VM #1
+90.26025714285714: Broker: Destroying VM #2
+90.26025714285714: Broker: Destroying VM #3
+90.26025714285714: Broker: Destroying VM #4
+90.26025714285714: Broker: Destroying VM #5
+90.26025714285714: Broker: Destroying VM #6
+90.26025714285714: Broker: Destroying VM #7
+90.26025714285714: Broker: Destroying VM #8
+90.26025714285714: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 90.26               Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #1
+0.1: Broker: Sending cloudlet 1 to VM #1
+0.1: Broker: Sending cloudlet 2 to VM #5
+0.1: Broker: Sending cloudlet 3 to VM #1
+0.1: Broker: Sending cloudlet 4 to VM #9
+0.1: Broker: Sending cloudlet 5 to VM #6
+0.1: Broker: Sending cloudlet 6 to VM #9
+0.1: Broker: Sending cloudlet 7 to VM #3
+0.1: Broker: Sending cloudlet 8 to VM #2
+0.1: Broker: Sending cloudlet 9 to VM #3
+0.1: Broker: Sending cloudlet 10 to VM #9
+0.1: Broker: Sending cloudlet 11 to VM #8
+0.1: Broker: Sending cloudlet 12 to VM #4
+0.1: Broker: Sending cloudlet 13 to VM #3
+0.1: Broker: Sending cloudlet 14 to VM #3
+0.1: Broker: Sending cloudlet 15 to VM #6
+0.1: Broker: Sending cloudlet 16 to VM #7
+0.1: Broker: Sending cloudlet 17 to VM #3
+0.1: Broker: Sending cloudlet 18 to VM #1
+0.1: Broker: Sending cloudlet 19 to VM #2
+0.1: Broker: Sending cloudlet 20 to VM #4
+0.1: Broker: Sending cloudlet 21 to VM #4
+0.1: Broker: Sending cloudlet 22 to VM #3
+0.1: Broker: Sending cloudlet 23 to VM #3
+0.1: Broker: Sending cloudlet 24 to VM #8
+0.1: Broker: Sending cloudlet 25 to VM #6
+0.1: Broker: Sending cloudlet 26 to VM #6
+0.1: Broker: Sending cloudlet 27 to VM #9
+0.1: Broker: Sending cloudlet 28 to VM #3
+0.1: Broker: Sending cloudlet 29 to VM #2
+0.1: Broker: Sending cloudlet 30 to VM #7
+0.1: Broker: Sending cloudlet 31 to VM #0
+0.1: Broker: Sending cloudlet 32 to VM #1
+0.1: Broker: Sending cloudlet 33 to VM #1
+0.1: Broker: Sending cloudlet 34 to VM #2
+0.1: Broker: Sending cloudlet 35 to VM #3
+0.1: Broker: Sending cloudlet 36 to VM #1
+0.1: Broker: Sending cloudlet 37 to VM #9
+0.1: Broker: Sending cloudlet 38 to VM #6
+0.1: Broker: Sending cloudlet 39 to VM #3
+0.1: Broker: Sending cloudlet 40 to VM #2
+0.1: Broker: Sending cloudlet 41 to VM #2
+0.1: Broker: Sending cloudlet 42 to VM #9
+0.1: Broker: Sending cloudlet 43 to VM #9
+0.1: Broker: Sending cloudlet 44 to VM #5
+0.1: Broker: Sending cloudlet 45 to VM #9
+0.1: Broker: Sending cloudlet 46 to VM #4
+0.1: Broker: Sending cloudlet 47 to VM #6
+0.1: Broker: Sending cloudlet 48 to VM #9
+0.1: Broker: Sending cloudlet 49 to VM #4
+0.1: Broker: Sending cloudlet 50 to VM #9
+0.1: Broker: Sending cloudlet 51 to VM #7
+0.1: Broker: Sending cloudlet 52 to VM #9
+0.1: Broker: Sending cloudlet 53 to VM #9
+0.1: Broker: Sending cloudlet 54 to VM #9
+0.1: Broker: Sending cloudlet 55 to VM #4
+0.1: Broker: Sending cloudlet 56 to VM #3
+0.1: Broker: Sending cloudlet 57 to VM #4
+0.1: Broker: Sending cloudlet 58 to VM #8
+0.1: Broker: Sending cloudlet 59 to VM #6
+0.1: Broker: Sending cloudlet 60 to VM #1
+0.1: Broker: Sending cloudlet 61 to VM #4
+0.1: Broker: Sending cloudlet 62 to VM #2
+0.1: Broker: Sending cloudlet 63 to VM #0
+0.1: Broker: Sending cloudlet 64 to VM #1
+0.1: Broker: Sending cloudlet 65 to VM #2
+0.1: Broker: Sending cloudlet 66 to VM #3
+0.1: Broker: Sending cloudlet 67 to VM #1
+0.1: Broker: Sending cloudlet 68 to VM #6
+0.1: Broker: Sending cloudlet 69 to VM #0
+0.1: Broker: Sending cloudlet 70 to VM #2
+0.1: Broker: Sending cloudlet 71 to VM #9
+0.1: Broker: Sending cloudlet 72 to VM #8
+0.1: Broker: Sending cloudlet 73 to VM #3
+0.1: Broker: Sending cloudlet 74 to VM #3
+0.1: Broker: Sending cloudlet 75 to VM #2
+0.1: Broker: Sending cloudlet 76 to VM #9
+0.1: Broker: Sending cloudlet 77 to VM #0
+0.1: Broker: Sending cloudlet 78 to VM #4
+0.1: Broker: Sending cloudlet 79 to VM #5
+0.1: Broker: Sending cloudlet 80 to VM #4
+0.1: Broker: Sending cloudlet 81 to VM #2
+0.1: Broker: Sending cloudlet 82 to VM #2
+0.1: Broker: Sending cloudlet 83 to VM #4
+0.1: Broker: Sending cloudlet 84 to VM #1
+0.1: Broker: Sending cloudlet 85 to VM #3
+0.1: Broker: Sending cloudlet 86 to VM #4
+0.1: Broker: Sending cloudlet 87 to VM #5
+0.1: Broker: Sending cloudlet 88 to VM #8
+0.1: Broker: Sending cloudlet 89 to VM #4
+0.1: Broker: Sending cloudlet 90 to VM #1
+0.1: Broker: Sending cloudlet 91 to VM #0
+0.1: Broker: Sending cloudlet 92 to VM #1
+0.1: Broker: Sending cloudlet 93 to VM #9
+0.1: Broker: Sending cloudlet 94 to VM #7
+0.1: Broker: Sending cloudlet 95 to VM #7
+0.1: Broker: Sending cloudlet 96 to VM #5
+0.1: Broker: Sending cloudlet 97 to VM #6
+0.1: Broker: Sending cloudlet 98 to VM #1
+0.1: Broker: Sending cloudlet 99 to VM #1
+9.281999999999998: Broker: Cloudlet 57 received
+11.430666666666665: Broker: Cloudlet 31 received
+13.370666666666665: Broker: Cloudlet 95 received
+18.110666666666667: Broker: Cloudlet 24 received
+22.05352380952381: Broker: Cloudlet 66 received
+22.163523809523813: Broker: Cloudlet 26 received
+23.427523809523812: Broker: Cloudlet 4 received
+23.537523809523815: Broker: Cloudlet 92 received
+23.987523809523815: Broker: Cloudlet 96 received
+29.110666666666667: Broker: Cloudlet 67 received
+30.286666666666665: Broker: Cloudlet 13 received
+32.36666666666667: Broker: Cloudlet 86 received
+33.75066666666667: Broker: Cloudlet 70 received
+37.71007142857143: Broker: Cloudlet 50 received
+38.502: Broker: Cloudlet 47 received
+40.41114285714286: Broker: Cloudlet 1 received
+40.52114285714286: Broker: Cloudlet 9 received
+46.759: Broker: Cloudlet 2 received
+46.869: Broker: Cloudlet 16 received
+47.181: Broker: Cloudlet 88 received
+48.399: Broker: Cloudlet 54 received
+48.509: Broker: Cloudlet 82 received
+48.946: Broker: Cloudlet 12 received
+51.098: Broker: Cloudlet 77 received
+51.598571428571425: Broker: Cloudlet 60 received
+52.11857142857143: Broker: Cloudlet 53 received
+52.708285714285715: Broker: Cloudlet 73 received
+53.208285714285715: Broker: Cloudlet 83 received
+53.597142857142856: Broker: Cloudlet 19 received
+53.939142857142855: Broker: Cloudlet 43 received
+54.74371428571428: Broker: Cloudlet 84 received
+54.91171428571428: Broker: Cloudlet 5 received
+55.02171428571428: Broker: Cloudlet 14 received
+56.386: Broker: Cloudlet 8 received
+58.744: Broker: Cloudlet 80 received
+61.81371428571429: Broker: Cloudlet 23 received
+63.60142857142856: Broker: Cloudlet 38 received
+64.15142857142857: Broker: Cloudlet 6 received
+64.50571428571428: Broker: Cloudlet 64 received
+68.59771428571428: Broker: Cloudlet 72 received
+68.80171428571427: Broker: Cloudlet 51 received
+69.29771428571426: Broker: Cloudlet 29 received
+69.56438095238093: Broker: Cloudlet 78 received
+70.03399999999999: Broker: Cloudlet 37 received
+70.44028571428571: Broker: Cloudlet 22 received
+71.59742857142857: Broker: Cloudlet 98 received
+71.82542857142856: Broker: Cloudlet 87 received
+72.39942857142856: Broker: Cloudlet 65 received
+72.6747619047619: Broker: Cloudlet 46 received
+72.7847619047619: Broker: Cloudlet 91 received
+73.40647619047618: Broker: Cloudlet 32 received
+74.23647619047618: Broker: Cloudlet 68 received
+76.07142857142857: Broker: Cloudlet 56 received
+76.90392857142857: Broker: Cloudlet 45 received
+78.47992857142856: Broker: Cloudlet 74 received
+79.54392857142855: Broker: Cloudlet 90 received
+80.82792857142856: Broker: Cloudlet 42 received
+81.74392857142855: Broker: Cloudlet 40 received
+82.19992857142856: Broker: Cloudlet 89 received
+84.36392857142856: Broker: Cloudlet 25 received
+86.778: Broker: Cloudlet 63 received
+86.888: Broker: Cloudlet 10 received
+88.03314285714286: Broker: Cloudlet 39 received
+88.36514285714286: Broker: Cloudlet 30 received
+88.47514285714286: Broker: Cloudlet 71 received
+88.80847619047618: Broker: Cloudlet 41 received
+89.01076190476189: Broker: Cloudlet 18 received
+89.13876190476189: Broker: Cloudlet 79 received
+89.27209523809523: Broker: Cloudlet 55 received
+90.014: Broker: Cloudlet 34 received
+90.014: Broker: Cloudlet 28 received
+90.134: Broker: Cloudlet 93 received
+90.244: Broker: Cloudlet 0 received
+90.244: Broker: Cloudlet 49 received
+90.354: Broker: Cloudlet 58 received
+90.606: Broker: Cloudlet 15 received
+91.20485714285714: Broker: Cloudlet 99 received
+91.41285714285713: Broker: Cloudlet 52 received
+92.10314285714284: Broker: Cloudlet 7 received
+92.21314285714284: Broker: Cloudlet 75 received
+93.38114285714285: Broker: Cloudlet 61 received
+94.42064285714285: Broker: Cloudlet 48 received
+94.53064285714285: Broker: Cloudlet 59 received
+94.76930952380951: Broker: Cloudlet 62 received
+95.04530952380951: Broker: Cloudlet 94 received
+95.2373095238095: Broker: Cloudlet 27 received
+95.41464285714284: Broker: Cloudlet 81 received
+95.52464285714284: Broker: Cloudlet 69 received
+95.52464285714284: Broker: Cloudlet 20 received
+95.63464285714284: Broker: Cloudlet 33 received
+95.63464285714284: Broker: Cloudlet 76 received
+95.74464285714284: Broker: Cloudlet 35 received
+95.95264285714283: Broker: Cloudlet 3 received
+96.06264285714283: Broker: Cloudlet 21 received
+96.06264285714283: Broker: Cloudlet 11 received
+96.17264285714283: Broker: Cloudlet 17 received
+96.69321428571426: Broker: Cloudlet 85 received
+96.80321428571426: Broker: Cloudlet 36 received
+96.80321428571426: Broker: Cloudlet 44 received
+96.80321428571426: Broker: Cloudlet 97 received
+96.80321428571426: Broker: All Cloudlets executed. Finishing...
+96.80321428571426: Broker: Destroying VM #0
+96.80321428571426: Broker: Destroying VM #1
+96.80321428571426: Broker: Destroying VM #2
+96.80321428571426: Broker: Destroying VM #3
+96.80321428571426: Broker: Destroying VM #4
+96.80321428571426: Broker: Destroying VM #5
+96.80321428571426: Broker: Destroying VM #6
+96.80321428571426: Broker: Destroying VM #7
+96.80321428571426: Broker: Destroying VM #8
+96.80321428571426: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 96.80               Initialising...
+Starting CloudSim version 3.0
+Broker is starting...
+DC is starting...
+Entities started.
+0.0: Broker: Cloud Resource List received with 1 resource(s)
+0.0: Broker: Trying to Create VM #0 in DC
+0.0: Broker: Trying to Create VM #1 in DC
+0.0: Broker: Trying to Create VM #2 in DC
+0.0: Broker: Trying to Create VM #3 in DC
+0.0: Broker: Trying to Create VM #4 in DC
+0.0: Broker: Trying to Create VM #5 in DC
+0.0: Broker: Trying to Create VM #6 in DC
+0.0: Broker: Trying to Create VM #7 in DC
+0.0: Broker: Trying to Create VM #8 in DC
+0.0: Broker: Trying to Create VM #9 in DC
+0.1: Broker: VM #0 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #1 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #2 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #3 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #4 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #5 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #6 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #7 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #8 has been created in Datacenter #3, Host #0
+0.1: Broker: VM #9 has been created in Datacenter #3, Host #0
+0.1: Broker: Sending cloudlet 0 to VM #9
+0.1: Broker: Sending cloudlet 1 to VM #7
+0.1: Broker: Sending cloudlet 2 to VM #7
+0.1: Broker: Sending cloudlet 3 to VM #4
+0.1: Broker: Sending cloudlet 4 to VM #5
+0.1: Broker: Sending cloudlet 5 to VM #0
+0.1: Broker: Sending cloudlet 6 to VM #3
+0.1: Broker: Sending cloudlet 7 to VM #2
+0.1: Broker: Sending cloudlet 8 to VM #2
+0.1: Broker: Sending cloudlet 9 to VM #8
+0.1: Broker: Sending cloudlet 10 to VM #8
+0.1: Broker: Sending cloudlet 11 to VM #4
+0.1: Broker: Sending cloudlet 12 to VM #8
+0.1: Broker: Sending cloudlet 13 to VM #4
+0.1: Broker: Sending cloudlet 14 to VM #8
+0.1: Broker: Sending cloudlet 15 to VM #2
+0.1: Broker: Sending cloudlet 16 to VM #5
+0.1: Broker: Sending cloudlet 17 to VM #5
+0.1: Broker: Sending cloudlet 18 to VM #2
+0.1: Broker: Sending cloudlet 19 to VM #1
+0.1: Broker: Sending cloudlet 20 to VM #1
+0.1: Broker: Sending cloudlet 21 to VM #9
+0.1: Broker: Sending cloudlet 22 to VM #8
+0.1: Broker: Sending cloudlet 23 to VM #8
+0.1: Broker: Sending cloudlet 24 to VM #5
+0.1: Broker: Sending cloudlet 25 to VM #1
+0.1: Broker: Sending cloudlet 26 to VM #8
+0.1: Broker: Sending cloudlet 27 to VM #2
+0.1: Broker: Sending cloudlet 28 to VM #7
+0.1: Broker: Sending cloudlet 29 to VM #6
+0.1: Broker: Sending cloudlet 30 to VM #7
+0.1: Broker: Sending cloudlet 31 to VM #4
+0.1: Broker: Sending cloudlet 32 to VM #8
+0.1: Broker: Sending cloudlet 33 to VM #8
+0.1: Broker: Sending cloudlet 34 to VM #2
+0.1: Broker: Sending cloudlet 35 to VM #5
+0.1: Broker: Sending cloudlet 36 to VM #6
+0.1: Broker: Sending cloudlet 37 to VM #2
+0.1: Broker: Sending cloudlet 38 to VM #8
+0.1: Broker: Sending cloudlet 39 to VM #9
+0.1: Broker: Sending cloudlet 40 to VM #4
+0.1: Broker: Sending cloudlet 41 to VM #3
+0.1: Broker: Sending cloudlet 42 to VM #6
+0.1: Broker: Sending cloudlet 43 to VM #6
+0.1: Broker: Sending cloudlet 44 to VM #5
+0.1: Broker: Sending cloudlet 45 to VM #4
+0.1: Broker: Sending cloudlet 46 to VM #4
+0.1: Broker: Sending cloudlet 47 to VM #4
+0.1: Broker: Sending cloudlet 48 to VM #9
+0.1: Broker: Sending cloudlet 49 to VM #0
+0.1: Broker: Sending cloudlet 50 to VM #4
+0.1: Broker: Sending cloudlet 51 to VM #9
+0.1: Broker: Sending cloudlet 52 to VM #7
+0.1: Broker: Sending cloudlet 53 to VM #4
+0.1: Broker: Sending cloudlet 54 to VM #5
+0.1: Broker: Sending cloudlet 55 to VM #4
+0.1: Broker: Sending cloudlet 56 to VM #6
+0.1: Broker: Sending cloudlet 57 to VM #0
+0.1: Broker: Sending cloudlet 58 to VM #4
+0.1: Broker: Sending cloudlet 59 to VM #1
+0.1: Broker: Sending cloudlet 60 to VM #9
+0.1: Broker: Sending cloudlet 61 to VM #9
+0.1: Broker: Sending cloudlet 62 to VM #2
+0.1: Broker: Sending cloudlet 63 to VM #6
+0.1: Broker: Sending cloudlet 64 to VM #3
+0.1: Broker: Sending cloudlet 65 to VM #1
+0.1: Broker: Sending cloudlet 66 to VM #8
+0.1: Broker: Sending cloudlet 67 to VM #6
+0.1: Broker: Sending cloudlet 68 to VM #5
+0.1: Broker: Sending cloudlet 69 to VM #1
+0.1: Broker: Sending cloudlet 70 to VM #8
+0.1: Broker: Sending cloudlet 71 to VM #2
+0.1: Broker: Sending cloudlet 72 to VM #5
+0.1: Broker: Sending cloudlet 73 to VM #9
+0.1: Broker: Sending cloudlet 74 to VM #8
+0.1: Broker: Sending cloudlet 75 to VM #6
+0.1: Broker: Sending cloudlet 76 to VM #0
+0.1: Broker: Sending cloudlet 77 to VM #4
+0.1: Broker: Sending cloudlet 78 to VM #2
+0.1: Broker: Sending cloudlet 79 to VM #7
+0.1: Broker: Sending cloudlet 80 to VM #2
+0.1: Broker: Sending cloudlet 81 to VM #1
+0.1: Broker: Sending cloudlet 82 to VM #7
+0.1: Broker: Sending cloudlet 83 to VM #5
+0.1: Broker: Sending cloudlet 84 to VM #6
+0.1: Broker: Sending cloudlet 85 to VM #8
+0.1: Broker: Sending cloudlet 86 to VM #9
+0.1: Broker: Sending cloudlet 87 to VM #0
+0.1: Broker: Sending cloudlet 88 to VM #5
+0.1: Broker: Sending cloudlet 89 to VM #2
+0.1: Broker: Sending cloudlet 90 to VM #9
+0.1: Broker: Sending cloudlet 91 to VM #6
+0.1: Broker: Sending cloudlet 92 to VM #0
+0.1: Broker: Sending cloudlet 93 to VM #6
+0.1: Broker: Sending cloudlet 94 to VM #3
+0.1: Broker: Sending cloudlet 95 to VM #4
+0.1: Broker: Sending cloudlet 96 to VM #6
+0.1: Broker: Sending cloudlet 97 to VM #0
+0.1: Broker: Sending cloudlet 98 to VM #9
+0.1: Broker: Sending cloudlet 99 to VM #7
+8.562666666666665: Broker: Cloudlet 9 received
+9.024285714285714: Broker: Cloudlet 40 received
+14.501428571428571: Broker: Cloudlet 64 received
+17.456000000000003: Broker: Cloudlet 57 received
+17.566000000000006: Broker: Cloudlet 69 received
+17.716857142857148: Broker: Cloudlet 24 received
+18.034933333333335: Broker: Cloudlet 1 received
+20.42328571428572: Broker: Cloudlet 60 received
+20.675285714285717: Broker: Cloudlet 15 received
+21.73128571428572: Broker: Cloudlet 93 received
+22.04328571428572: Broker: Cloudlet 13 received
+22.153285714285722: Broker: Cloudlet 66 received
+23.370000000000005: Broker: Cloudlet 90 received
+24.861428571428576: Broker: Cloudlet 83 received
+28.397357142857143: Broker: Cloudlet 63 received
+28.631357142857144: Broker: Cloudlet 59 received
+28.741357142857147: Broker: Cloudlet 71 received
+29.891333333333336: Broker: Cloudlet 11 received
+30.413333333333334: Broker: Cloudlet 97 received
+31.388400000000004: Broker: Cloudlet 70 received
+33.5678: Broker: Cloudlet 82 received
+34.992371428571424: Broker: Cloudlet 17 received
+35.25237142857142: Broker: Cloudlet 67 received
+35.684371428571424: Broker: Cloudlet 73 received
+35.86937142857143: Broker: Cloudlet 18 received
+36.29470476190476: Broker: Cloudlet 45 received
+37.15514920634921: Broker: Cloudlet 23 received
+37.97714920634921: Broker: Cloudlet 94 received
+40.75677777777778: Broker: Cloudlet 76 received
+42.038377777777775: Broker: Cloudlet 52 received
+42.148377777777775: Broker: Cloudlet 81 received
+42.258377777777774: Broker: Cloudlet 39 received
+42.75666666666667: Broker: Cloudlet 44 received
+42.86666666666667: Broker: Cloudlet 42 received
+43.27166666666667: Broker: Cloudlet 62 received
+45.12253968253968: Broker: Cloudlet 85 received
+46.89142857142857: Broker: Cloudlet 55 received
+47.67142857142857: Broker: Cloudlet 95 received
+47.99542857142857: Broker: Cloudlet 14 received
+48.423428571428566: Broker: Cloudlet 43 received
+48.56342857142857: Broker: Cloudlet 27 received
+49.28742857142856: Broker: Cloudlet 98 received
+49.399428571428565: Broker: Cloudlet 88 received
+50.56209523809523: Broker: Cloudlet 33 received
+50.93187301587301: Broker: Cloudlet 31 received
+51.07587301587301: Broker: Cloudlet 2 received
+52.58244444444444: Broker: Cloudlet 92 received
+52.93844444444444: Broker: Cloudlet 20 received
+54.06733333333333: Broker: Cloudlet 36 received
+54.89683333333333: Broker: Cloudlet 89 received
+55.53111904761905: Broker: Cloudlet 16 received
+56.51488888888888: Broker: Cloudlet 74 received
+56.96060317460317: Broker: Cloudlet 86 received
+57.40238095238095: Broker: Cloudlet 53 received
+57.51238095238095: Broker: Cloudlet 41 received
+58.06138095238095: Broker: Cloudlet 91 received
+58.26838095238095: Broker: Cloudlet 37 received
+58.745714285714286: Broker: Cloudlet 26 received
+58.999047619047616: Broker: Cloudlet 46 received
+59.109047619047615: Broker: Cloudlet 79 received
+59.320476190476185: Broker: Cloudlet 72 received
+59.430476190476185: Broker: Cloudlet 56 received
+59.610476190476184: Broker: Cloudlet 21 received
+59.727976190476184: Broker: Cloudlet 7 received
+60.60997619047618: Broker: Cloudlet 65 received
+60.71997619047618: Broker: Cloudlet 68 received
+60.911087301587294: Broker: Cloudlet 58 received
+61.02108730158729: Broker: Cloudlet 5 received
+61.28: Broker: Cloudlet 28 received
+61.28: Broker: Cloudlet 48 received
+62.15888888888889: Broker: Cloudlet 38 received
+62.36888888888889: Broker: Cloudlet 29 received
+62.91688888888889: Broker: Cloudlet 34 received
+63.468: Broker: Cloudlet 10 received
+63.93555555555556: Broker: Cloudlet 3 received
+64.68914285714284: Broker: Cloudlet 4 received
+64.81964285714284: Broker: Cloudlet 78 received
+64.98764285714284: Broker: Cloudlet 49 received
+65.21964285714284: Broker: Cloudlet 19 received
+65.32964285714284: Broker: Cloudlet 51 received
+65.46564285714284: Broker: Cloudlet 99 received
+65.67414285714284: Broker: Cloudlet 75 received
+66.0528095238095: Broker: Cloudlet 47 received
+66.19947619047616: Broker: Cloudlet 12 received
+66.39547619047616: Broker: Cloudlet 8 received
+66.50547619047616: Broker: Cloudlet 84 received
+66.61547619047616: Broker: Cloudlet 54 received
+66.97147619047615: Broker: Cloudlet 6 received
+67.08147619047615: Broker: Cloudlet 77 received
+67.08147619047615: Broker: Cloudlet 61 received
+67.19147619047615: Broker: Cloudlet 32 received
+67.32797619047615: Broker: Cloudlet 80 received
+67.43797619047615: Broker: Cloudlet 96 received
+67.56997619047615: Broker: Cloudlet 30 received
+67.67997619047615: Broker: Cloudlet 35 received
+67.78997619047615: Broker: Cloudlet 50 received
+67.78997619047615: Broker: Cloudlet 22 received
+67.78997619047615: Broker: Cloudlet 0 received
+68.00397619047615: Broker: Cloudlet 25 received
+68.11397619047615: Broker: Cloudlet 87 received
+68.11397619047615: Broker: All Cloudlets executed. Finishing...
+68.11397619047615: Broker: Destroying VM #0
+68.11397619047615: Broker: Destroying VM #1
+68.11397619047615: Broker: Destroying VM #2
+68.11397619047615: Broker: Destroying VM #3
+68.11397619047615: Broker: Destroying VM #4
+68.11397619047615: Broker: Destroying VM #5
+68.11397619047615: Broker: Destroying VM #6
+68.11397619047615: Broker: Destroying VM #7
+68.11397619047615: Broker: Destroying VM #8
+68.11397619047615: Broker: Destroying VM #9
+Broker is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Broker is shutting down...
+DC is shutting down...
+Simulation completed.
+Simulation completed.
+ 68.11               
+
+=== Test Completed ===
