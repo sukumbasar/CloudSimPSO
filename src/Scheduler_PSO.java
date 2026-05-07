@@ -11,7 +11,12 @@ public class Scheduler_PSO {
     private static final int HYBRID_PARTICLES = 10;
     private static final double ALPHA = 0.7;
     private static final double BETA = 0.3;
+    private static final int MAX_AGE = 15;
     private static final Random random = new Random(42);
+
+    // PSO'nun bulduğu iç fitness değerlerini dışarıya aktar
+    public static double lastFitness = 0.0;
+    public static int lastRejuvenations = 0;
 
     public static List<Cloudlet> applyPSO(List<Cloudlet> cloudletList, List<Vm> vmList) {
         int taskCount = cloudletList.size();
@@ -24,6 +29,7 @@ public class Scheduler_PSO {
         double[] pBestFitness = new double[PARTICLE_COUNT];
         int[] gBest = new int[taskCount];
         double gBestFitness = Double.MAX_VALUE;
+        int[] age = new int[PARTICLE_COUNT];
 
         // 1. İlk 5 parçacık Max-Min varyasyonlarıyla başlat
         for (int i = 0; i < 5; i++) {
@@ -33,6 +39,7 @@ public class Scheduler_PSO {
             }
             pBest[i] = particles[i].clone();
             pBestFitness[i] = calculateFitness(particles[i], cloudletList, vmList);
+            age[i] = 0;
             if (pBestFitness[i] < gBestFitness) {
                 gBestFitness = pBestFitness[i];
                 gBest = particles[i].clone();
@@ -47,6 +54,7 @@ public class Scheduler_PSO {
             }
             pBest[i] = particles[i].clone();
             pBestFitness[i] = calculateFitness(particles[i], cloudletList, vmList);
+            age[i] = 0;
             if (pBestFitness[i] < gBestFitness) {
                 gBestFitness = pBestFitness[i];
                 gBest = particles[i].clone();
@@ -61,20 +69,36 @@ public class Scheduler_PSO {
             }
             pBest[i] = particles[i].clone();
             pBestFitness[i] = calculateFitness(particles[i], cloudletList, vmList);
+            age[i] = 0;
             if (pBestFitness[i] < gBestFitness) {
                 gBestFitness = pBestFitness[i];
                 gBest = particles[i].clone();
             }
         }
 
-        // 4. İterasyon döngüsü - Dinamik W + Early Stopping
+        // 4. İterasyon döngüsü - Dinamik W + Early Stopping + Aging
         int noImprovementCount = 0;
         double previousBest = gBestFitness;
+        int rejuvenationCount = 0;
 
         for (int iter = 0; iter < MAX_ITERATIONS; iter++) {
             double w = W_MAX - (W_MAX - W_MIN) * iter / MAX_ITERATIONS;
 
             for (int i = 0; i < PARTICLE_COUNT; i++) {
+
+                // Aging kontrolü — yaşlı parçacığı yenile
+                if (age[i] >= MAX_AGE) {
+                    for (int j = 0; j < taskCount; j++) {
+                        particles[i][j] = random.nextInt(vmCount);
+                        velocities[i][j] = (random.nextDouble() - 0.5) * 0.2;
+                    }
+                    pBest[i] = particles[i].clone();
+                    pBestFitness[i] = calculateFitness(particles[i], cloudletList, vmList);
+                    age[i] = 0;
+                    rejuvenationCount++;
+                    continue;
+                }
+
                 for (int j = 0; j < taskCount; j++) {
                     double r1 = random.nextDouble();
                     double r2 = random.nextDouble();
@@ -95,6 +119,9 @@ public class Scheduler_PSO {
                 if (fitness < pBestFitness[i]) {
                     pBest[i] = particles[i].clone();
                     pBestFitness[i] = fitness;
+                    age[i] = 0;
+                } else {
+                    age[i]++;
                 }
 
                 if (fitness < gBestFitness) {
@@ -116,12 +143,17 @@ public class Scheduler_PSO {
             }
         }
 
+        // Static değişkenlere yaz
+        lastFitness = gBestFitness;
+        lastRejuvenations = rejuvenationCount;
+
         // 5. En iyi çözümü ata
         for (int j = 0; j < taskCount; j++) {
             cloudletList.get(j).setVmId(vmList.get(gBest[j]).getId());
         }
 
-        System.out.printf("  Gelişmiş Hibrit PSO tamamlandı - En iyi makespan: %.2f%n", gBestFitness);
+        System.out.printf("  Aging PSO tamamlandı - En iyi makespan: %.2f | Yenilenen parçacık: %d%n",
+            gBestFitness, rejuvenationCount);
         return cloudletList;
     }
 
