@@ -71,7 +71,17 @@ public class Scheduler_PSO {
         int rejuvenationCount = 0;
 
         for (int iter = 0; iter < MAX_ITERATIONS; iter++) {
+
+            // Dinamik W
             double w = W_MAX - (W_MAX - W_MIN) * iter / MAX_ITERATIONS;
+
+            // Adaptive W — sürü çeşitliliğine göre ince ayar
+            double diversity = calculateDiversity(particles, PARTICLE_COUNT, taskCount, vmCount);
+            if (diversity < 0.1) {
+                w = Math.min(W_MAX, w * 1.1);
+            } else if (diversity > 0.5) {
+                w = Math.max(W_MIN, w * 0.9);
+            }
 
             for (int i = 0; i < PARTICLE_COUNT; i++) {
                 if (age[i] >= MAX_AGE) {
@@ -127,8 +137,28 @@ public class Scheduler_PSO {
         for (int j = 0; j < taskCount; j++)
             cloudletList.get(j).setVmId(vmList.get(gBest[j]).getId());
 
-        System.out.printf("  PSO (Aging+OBL+Cauchy) - Makespan: %.2f | Yenilenen: %d%n", gBestFitness, rejuvenationCount);
+        System.out.printf("  PSO (Aging+OBL+Cauchy+AdaptiveW) - Makespan: %.2f | Yenilenen: %d%n",
+            gBestFitness, rejuvenationCount);
         return cloudletList;
+    }
+
+    private static double calculateDiversity(int[][] particles, int particleCount,
+                                              int taskCount, int vmCount) {
+        double[] mean = new double[taskCount];
+        for (int i = 0; i < particleCount; i++)
+            for (int j = 0; j < taskCount; j++)
+                mean[j] += particles[i][j];
+        for (int j = 0; j < taskCount; j++)
+            mean[j] /= particleCount;
+        double diversity = 0;
+        for (int i = 0; i < particleCount; i++) {
+            double dist = 0;
+            for (int j = 0; j < taskCount; j++)
+                dist += Math.abs(particles[i][j] - mean[j]);
+            diversity += dist / taskCount;
+        }
+        diversity /= (particleCount * (vmCount - 1));
+        return Math.min(1.0, diversity);
     }
 
     private static int[] generateOpposite(int[] position, int vmCount) {
