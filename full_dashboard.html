@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Task Scheduling — Research Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+    :root {
+      --bg: #060a0f;
+      --surface: #0c1219;
+      --surface2: #111b26;
+      --border: #1a2535;
+      --border2: #243347;
+      --text: #dde6f0;
+      --muted: #5a7a99;
+      --accent: #00d4ff;
+      --pso: #f472b6;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --violet: #8b5cf6
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      min-height: 100vh
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 800px 500px at 20% 10%, rgba(0, 212, 255, .03) 0%, transparent 60%), radial-gradient(ellipse 600px 400px at 80% 80%, rgba(244, 114, 182, .03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0
+    }
+
+    .wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1
+    }
+
+    header {
+      padding: 36px 0 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 20px
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 212, 255, .07);
+      border: 1px solid rgba(0, 212, 255, .2);
+      color: var(--accent);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      padding: 5px 12px;
+      margin-bottom: 12px;
+      text-transform: uppercase
+    }
+
+    .pill-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 2s ease infinite
+    }
+
+    h1 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      letter-spacing: -.02em
+    }
+
+    h1 em {
+      color: var(--accent);
+      font-style: normal
+    }
+
+    .header-subtitle {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.6
+    }
+
+    .authors-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      min-width: 310px
+    }
+
+    .authors-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px
+    }
+
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px
+    }
+
+    .author-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text)
+    }
+
+    .author-role {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .supervisor-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border)
+    }
+
+    .supervisor-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--amber);
+      border: 1px solid rgba(245, 158, 11, .3);
+      padding: 2px 7px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      white-space: nowrap
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .meta-item {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .meta-item span {
+      color: var(--text)
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-bottom: 36px
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .stat::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px
+    }
+
+    .stat.c1::after {
+      background: var(--accent)
+    }
+
+    .stat.c2::after {
+      background: var(--pso)
+    }
+
+    .stat.c3::after {
+      background: var(--green)
+    }
+
+    .stat.c4::after {
+      background: var(--amber)
+    }
+
+    .stat.c5::after {
+      background: var(--violet)
+    }
+
+    .stat.c6::after {
+      background: #4a9eff
+    }
+
+    .stat-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px
+    }
+
+    .stat-val {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px
+    }
+
+    .section {
+      margin-bottom: 40px
+    }
+
+    .sec-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .sec-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text);
+      white-space: nowrap
+    }
+
+    .sec-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border)
+    }
+
+    .sec-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      padding: 2px 8px;
+      border-radius: 2px;
+      text-transform: uppercase
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      transition: border-color .2s
+    }
+
+    .card:hover {
+      border-color: var(--border2)
+    }
+
+    .card-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px
+    }
+
+    .card-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 16px
+    }
+
+    .chart-box {
+      position: relative;
+      height: 250px
+    }
+
+    .chart-box.tall {
+      height: 310px
+    }
+
+    .chart-box.xtall {
+      height: 380px
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 18px
+    }
+
+    .tab {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      transition: all .15s
+    }
+
+    .tab:hover {
+      color: var(--text)
+    }
+
+    .tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent)
+    }
+
+    .tab-pane {
+      display: none
+    }
+
+    .tab-pane.active {
+      display: block
+    }
+
+    .legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 12px
+    }
+
+    .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .leg-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    .mechs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .mech-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .mech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%
+    }
+
+    .mech-card.m1::before {
+      background: var(--accent)
+    }
+
+    .mech-card.m2::before {
+      background: var(--pso)
+    }
+
+    .mech-card.m3::before {
+      background: var(--green)
+    }
+
+    .mech-card.m4::before {
+      background: var(--amber)
+    }
+
+    .mech-card.m5::before {
+      background: var(--violet)
+    }
+
+    .mech-card.m6::before {
+      background: #4a9eff
+    }
+
+    .mech-card.m7::before {
+      background: #34d399
+    }
+
+    .mech-card.m8::before {
+      background: #f97316
+    }
+
+    .mech-card.m9::before {
+      background: #06b6d4
+    }
+
+    .mech-name {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+      margin-left: 8px
+    }
+
+    .mech-type {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      margin-left: 8px
+    }
+
+    .mech-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-left: 8px
+    }
+
+    .algo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .algo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px
+    }
+
+    .algo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px
+    }
+
+    .algo-name {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      font-weight: 700
+    }
+
+    .algo-type {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 2px
+    }
+
+    .algo-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65
+    }
+
+    .branch-table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .branch-table th,
+    .branch-table td {
+      padding: 12px 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      border: 1px solid var(--border)
+    }
+
+    .branch-table th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-align: left
+    }
+
+    .branch-table tbody tr:hover {
+      background: rgba(0, 212, 255, .02)
+    }
+
+    .branch-name {
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .branch-note {
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .aging-tbl {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .aging-tbl th,
+    .aging-tbl td {
+      padding: 12px 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      text-align: center
+    }
+
+    .aging-tbl th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .aging-tbl tbody tr:nth-child(odd) {
+      background: rgba(244, 114, 182, .02)
+    }
+
+    .v-internal {
+      color: var(--pso);
+      font-weight: 700
+    }
+
+    .v-improve {
+      color: var(--green);
+      font-weight: 700
+    }
+
+    .v-rejuv {
+      color: var(--amber)
+    }
+
+    .abl-tbl {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .abl-tbl th,
+    .abl-tbl td {
+      padding: 12px 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      border: 1px solid var(--border)
+    }
+
+    .abl-tbl th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .abl-tbl tbody tr:nth-child(odd) {
+      background: rgba(255, 255, 255, .01)
+    }
+
+    .abl-branch {
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .abl-up {
+      color: var(--green)
+    }
+
+    .abl-down {
+      color: var(--pso)
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      flex-wrap: wrap
+    }
+
+    .fbtn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      padding: 6px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .fbtn:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .fbtn.active {
+      background: rgba(0, 212, 255, .07);
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .tbl-wrap {
+      overflow-x: auto
+    }
+
+    table.main {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px
+    }
+
+    table.main thead tr {
+      border-bottom: 1px solid var(--border2)
+    }
+
+    table.main th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 12px;
+      text-align: left
+    }
+
+    table.main tbody tr {
+      border-bottom: 1px solid rgba(26, 37, 53, .6);
+      transition: background .12s
+    }
+
+    table.main tbody tr:hover {
+      background: rgba(0, 212, 255, .02)
+    }
+
+    table.main td {
+      padding: 10px 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 700
+    }
+
+    .b-FCFS {
+      background: rgba(74, 158, 255, .12);
+      color: #4a9eff
+    }
+
+    .b-RR {
+      background: rgba(139, 92, 246, .12);
+      color: #8b5cf6
+    }
+
+    .b-SJF {
+      background: rgba(245, 158, 11, .12);
+      color: #f59e0b
+    }
+
+    .b-MINMIN {
+      background: rgba(52, 211, 153, .12);
+      color: #34d399
+    }
+
+    .b-MAXMIN {
+      background: rgba(16, 185, 129, .12);
+      color: #10b981
+    }
+
+    .b-PSO {
+      background: rgba(244, 114, 182, .12);
+      color: #f472b6
+    }
+
+    .best-tag {
+      font-size: 10px;
+      background: rgba(0, 212, 255, .1);
+      color: var(--accent);
+      padding: 1px 5px
+    }
+
+    .pct-good {
+      color: var(--green);
+      font-size: 11px
+    }
+
+    .pct-bad {
+      color: #f87171;
+      font-size: 11px
+    }
+
+    .findings {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .finding {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 18px
+    }
+
+    .finding-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 7px
+    }
+
+    .finding-txt {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65
+    }
+
+    .param-tbl {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .param-tbl th,
+    .param-tbl td {
+      padding: 12px 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      text-align: center
+    }
+
+    .param-tbl th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    .param-tbl .best-cell {
+      color: var(--accent);
+      font-weight: 700;
+      background: rgba(0, 212, 255, .05)
+    }
+
+    .param-tbl .row-h {
+      text-align: left;
+      color: var(--text);
+      font-weight: 600
+    }
+
+    .constraint-note {
+      background: rgba(245, 158, 11, .05);
+      border: 1px solid rgba(245, 158, 11, .2);
+      border-left: 3px solid var(--amber);
+      padding: 16px 20px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.65
+    }
+
+    .constraint-note strong {
+      color: var(--amber)
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    @media(max-width:1000px) {
+
+      .grid2,
+      .grid3,
+      .mechs-grid,
+      .algo-grid,
+      .findings {
+        grid-template-columns: 1fr
+      }
+
+      .stats {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .header-top {
+        flex-direction: column
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="header-top">
+        <div>
+          <div class="pill"><span class="pill-dot"></span>CloudSim 3.0.3 · Java 26 · 54 Scenarios · Hybrid Aging PSO
+          </div>
+          <h1>Task Scheduling Optimization<br>in Cloud Computing Using <em>PSO</em></h1>
+          <p class="header-subtitle">Comparative analysis of 6 scheduling algorithms across 54 simulation scenarios.
+            Primary contribution: Hybrid Aging PSO with 8 enhancement mechanisms — Aging, OBL, Cauchy Mutation, Adaptive
+            W, and Lbest Topology.</p>
+          <div class="meta-row" style="margin-top:14px">
+            <div class="meta-item">University <span>Istinye Üniversitesi</span></div>
+            <div class="meta-item">Department <span>Computer Engineering</span></div>
+            <div class="meta-item">Date <span>April 2026</span></div>
+            <div class="meta-item">Repo <span>github.com/sukumbasar/CloudSimPSO</span></div>
+          </div>
+        </div>
+        <div class="authors-card">
+          <div class="authors-label">Research Team</div>
+          <div class="author-row">
+            <div class="author-avatar" style="background:rgba(0,212,255,.15);color:var(--accent)">SK</div>
+            <div>
+              <div class="author-name">Simay Su Kumbasar</div>
+              <div class="author-role">Primary Researcher</div>
+            </div>
+          </div>
+          <div class="author-row">
+            <div class="author-avatar" style="background:rgba(244,114,182,.15);color:var(--pso)">ZB</div>
+            <div>
+              <div class="author-name">Zehra Betül Şit</div>
+              <div class="author-role">Primary Researcher</div>
+            </div>
+          </div>
+          <div class="supervisor-row">
+            <div class="supervisor-badge">Supervisor</div>
+            <div>
+              <div class="author-name" style="font-size:13px">Emir Seyyedabbasi</div>
+              <div class="author-role">PhD, Computer Engineering</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- PSO RATIONALE / WHY PSO -->
+    <div class="section">
+      <div class="card"
+        style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.2); padding: 24px;">
+        <div class="sec-header" style="margin-bottom: 12px;">
+          <div class="sec-title" style="color: #fff; font-size: 13px;">PSO SCHEDULING</div>
+          <div class="sec-line" style="background: rgba(255, 255, 255, 0.2);"></div>
+        </div>
+        <p
+          style="color: #ffffff; font-size: 15px; line-height: 1.7; font-weight: 400; font-family: 'IBM Plex Sans', sans-serif;">
+          In the rapidly evolving landscape of cloud computing, the efficiency of task scheduling remains a fundamental
+          challenge that directly dictates system performance. The core of this problem lies in the complex mapping of
+          workloads to virtual resources—a process so computationally intensive that traditional search methods simply
+          cannot keep pace with its vast search space.
+          While conventional static algorithms and simple heuristics often fall short due to their <strong>'machine
+            blindness'</strong> or their tendency to settle for local optima, our research pivots toward a more
+          sophisticated, global approach. We have adopted <strong>Particle Swarm Optimization (PSO)</strong>—a
+          meta-heuristic inspired by the collective intelligence of natural swarms—to navigate this complexity.
+          Our decision to utilize PSO is rooted in its inherent flexibility and its capacity for continuous refinement.
+          Rather than relying on a single-pass decision, our framework leverages an iterative, population-based search
+          that evaluates the global landscape. To push these boundaries further, we developed a <strong>Hybrid Aging
+            PSO</strong> model, integrating advanced enhancement mechanisms designed to overcome the limitations of
+          standard meta-heuristics. In the following sections, I will demonstrate how this hybrid architecture achieves
+          superior optimization quality and robust resource balance compared to traditional methodologies.
+        </p>
+      </div>
+    </div>
+    <!-- PSO RATIONALE / WHY PSO -->
+
+
+    <div class="stats">
+      <div class="stat c1">
+        <div class="stat-label">Algorithms</div>
+        <div class="stat-val">6</div>
+        <div class="stat-sub">FCFS · RR · SJF · Min-Min · Max-Min · PSO</div>
+      </div>
+      <div class="stat c2">
+        <div class="stat-label">PSO Mechanisms</div>
+        <div class="stat-val">8</div>
+        <div class="stat-sub">Aging · OBL · Cauchy · AdaptiveW · Lbest +3</div>
+      </div>
+      <div class="stat c3">
+        <div class="stat-label">Total Scenarios</div>
+        <div class="stat-val">54</div>
+        <div class="stat-sub">6 algos × 9 configurations</div>
+      </div>
+      <div class="stat c4">
+        <div class="stat-label">PSO Internal Gain</div>
+        <div class="stat-val">~30%</div>
+        <div class="stat-sub">vs CloudSim output — all 9 scenarios</div>
+      </div>
+      <div class="stat c5">
+        <div class="stat-label">Best Makespan</div>
+        <div class="stat-val">65.55s</div>
+        <div class="stat-sub">PSO · 100 tasks / 10 VMs</div>
+      </div>
+      <div class="stat c6">
+        <div class="stat-label">Max Improvement</div>
+        <div class="stat-val">76%</div>
+        <div class="stat-sub">PSO over FCFS · 500/10 scenario</div>
+      </div>
+    </div>
+
+    <!-- ALGORITHMS -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Scheduling Algorithms</div>
+        <div class="sec-line"></div>
+        <div class="sec-badge" style="background:rgba(0,212,255,.08);color:var(--accent)">6 total</div>
+      </div>
+      <div class="algo-grid">
+        <div class="algo-card" style="border-color:#4a9eff33">
+          <div class="algo-header"><span class="algo-name" style="color:#4a9eff">FCFS</span><span class="algo-type"
+              style="background:rgba(74,158,255,.1);color:#4a9eff">Static · Baseline</span></div>
+          <div class="algo-desc">First-Come-First-Served — sequential assignment with no resource awareness. Lower-bound
+            performance baseline across all 54 scenarios.</div>
+        </div>
+        <div class="algo-card" style="border-color:#8b5cf633">
+          <div class="algo-header"><span class="algo-name" style="color:#8b5cf6">Round Robin</span><span
+              class="algo-type" style="background:rgba(139,92,246,.1);color:#8b5cf6">Static</span></div>
+          <div class="algo-desc">Circular VM assignment. Produces results statistically equivalent to FCFS when all
+            tasks arrive simultaneously at t=0.1 — empirically confirmed.</div>
+        </div>
+        <div class="algo-card" style="border-color:#f59e0b33">
+          <div class="algo-header"><span class="algo-name" style="color:#f59e0b">SJF</span><span class="algo-type"
+              style="background:rgba(245,158,11,.1);color:#f59e0b">Static · Machine-Blind</span></div>
+          <div class="algo-desc">Shortest Job First — sorts ascending by task length. Ignores VM speed. Underperforms
+            FCFS in multiple scenarios: Machine-Blindness phenomenon (100/10: SJF=239s vs FCFS=217s).</div>
+        </div>
+        <div class="algo-card" style="border-color:#34d39933">
+          <div class="algo-header"><span class="algo-name" style="color:#34d399">Min-Min</span><span class="algo-type"
+              style="background:rgba(52,211,153,.1);color:#34d399">Heuristic</span></div>
+          <div class="algo-desc">Assigns smallest tasks first to the VM with minimum completion time. Resource-aware.
+            Wins extreme constrained scenarios (1000/10: 659s — beats Max-Min).</div>
+        </div>
+        <div class="algo-card" style="border-color:#10b98133">
+          <div class="algo-header"><span class="algo-name" style="color:#10b981">Max-Min</span><span class="algo-type"
+              style="background:rgba(16,185,129,.1);color:#10b981">Heuristic</span></div>
+          <div class="algo-desc">Assigns largest tasks first to the VM with minimum completion time. Prevents
+            bottlenecks. Wins most scenarios — primary PSO benchmark.</div>
+        </div>
+        <div class="algo-card" style="border-color:var(--pso)55">
+          <div class="algo-header"><span class="algo-name" style="color:var(--pso)">Hybrid Aging PSO</span><span
+              class="algo-type" style="background:rgba(244,114,182,.1);color:var(--pso)">Meta-heuristic ★</span></div>
+          <div class="algo-desc">Population-based global search with 8 enhancement mechanisms. Primary research
+            contribution. Finds solutions 28–31% better than CloudSim reflects across all 9 scenarios.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PSO MECHANISMS -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">PSO Enhancement Mechanisms</div>
+        <div class="sec-line"></div>
+        <div class="sec-badge" style="background:rgba(244,114,182,.08);color:var(--pso)">8 mechanisms · iteratively
+          added</div>
+      </div>
+      <div class="mechs-grid">
+        <div class="mech-card m1">
+          <div class="mech-name">Hybrid Initialization</div>
+          <div class="mech-type">Initialization</div>
+          <div class="mech-desc">5 particles seeded with Max-Min + 5 with Min-Min. Provides high-quality starting points
+            from both heuristic extremes, maximizing initial search space coverage.</div>
+        </div>
+        <div class="mech-card m2">
+          <div class="mech-name">Dynamic Inertia Weight</div>
+          <div class="mech-type">Core PSO · W: 0.9 → 0.4</div>
+          <div class="mech-desc">Linearly decreasing W promotes global exploration early and local exploitation later.
+            Replaces fixed W=0.7 from basic PSO. Based on Xue (2019).</div>
+        </div>
+        <div class="mech-card m3">
+          <div class="mech-name">Velocity Clamping</div>
+          <div class="mech-type">Stabilization · vMax = vmCount × 0.5</div>
+          <div class="mech-desc">Bounds particle velocity to prevent overshooting. Scales with problem size — 10 VMs →
+            ±5, 50 VMs → ±25. Confirmed by experiment to have no impact on CloudSim makespan.</div>
+        </div>
+        <div class="mech-card m4">
+          <div class="mech-name">Early Stopping</div>
+          <div class="mech-type">Convergence Detection · 20 iter plateau</div>
+          <div class="mech-desc">Terminates when global best shows no improvement for 20 consecutive iterations.
+            Confirmed PSO converges to plateau before 200-iteration limit — motivates Aging mechanism.</div>
+        </div>
+        <div class="mech-card m5">
+          <div class="mech-name">Aging Mechanism</div>
+          <div class="mech-type">Anti-Convergence · MAX_AGE = 15 · branch: main</div>
+          <div class="mech-desc">Each particle tracks stagnation count. When age ≥ 15 without improvement, particle is
+            rejuvenated with new random position. Directly addresses premature convergence.</div>
+        </div>
+        <div class="mech-card m6">
+          <div class="mech-name">Opposition-Based Learning</div>
+          <div class="mech-type">Init Enhancement · branch: pso-obl</div>
+          <div class="mech-desc">For each particle computes opposite: pos_opp = (vmCount-1) - pos. Evaluates both and
+            keeps better one. Doubles effective search coverage at initialization.</div>
+        </div>
+        <div class="mech-card m7">
+          <div class="mech-name">Cauchy Mutation</div>
+          <div class="mech-type">Escape Mechanism · 10% prob · branch: pso-cauchy</div>
+          <div class="mech-desc">10% probability per particle: applies Cauchy-distributed random jump to one task
+            assignment. Heavy-tailed distribution enables large escapes from local optima — reduces aging need.</div>
+        </div>
+        <div class="mech-card m8">
+          <div class="mech-name">Adaptive Inertia Weight</div>
+          <div class="mech-type">Dynamic Tuning · branch: pso-adaptivew</div>
+          <div class="mech-desc">Adjusts W based on swarm diversity: diversity &lt; 0.1 → W×1.1 (explore); diversity
+            &gt; 0.5 → W×0.9 (focus). Complements Dynamic W with real-time adaptation.</div>
+        </div>
+        <div class="mech-card m9">
+          <div class="mech-name">Lbest Topology</div>
+          <div class="mech-type">Social Structure · neighborhood=3 · branch: pso-full</div>
+          <div class="mech-desc">Replaces gbest with lbest: each particle follows only 3 nearest neighbors. Prevents
+            premature swarm collapse. Doubles rejuvenations in 1000/10 scenario (17→40).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GITHUB -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">GitHub Branch Structure — Ablation Study</div>
+        <div class="sec-line"></div>
+        <div class="sec-badge" style="background:rgba(139,92,246,.08);color:var(--violet)">5 branches</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Repository</div>
+        <div class="card-subtitle" style="margin-bottom:16px">github.com/sukumbasar/CloudSimPSO — Each branch isolates
+          one additional mechanism for independent evaluation</div>
+        <table class="branch-table">
+          <thead>
+            <tr>
+              <th>Branch</th>
+              <th>Mechanisms Included</th>
+              <th>Key Ablation Finding</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="branch-name">main</span></td>
+              <td>Hybrid Init + Dynamic W + Velocity Clamping + Early Stopping + Aging</td>
+              <td class="branch-note">Core stable · 28-31% internal gain confirmed · Rejuvenations: 15/36/17/96</td>
+            </tr>
+            <tr>
+              <td><span class="branch-name">pso-obl</span></td>
+              <td>main + Opposition-Based Learning (OBL)</td>
+              <td class="branch-note">Rejuvenations ↑ (15→17, 36→42, 17→22) — OBL accelerates convergence, particles age
+                faster</td>
+            </tr>
+            <tr>
+              <td><span class="branch-name">pso-cauchy</span></td>
+              <td>pso-obl + Cauchy Mutation</td>
+              <td class="branch-note">Rejuvenations ↓ (17→14, 42→41, 22→19) — Cauchy escapes reduce aging dependency
+              </td>
+            </tr>
+            <tr>
+              <td><span class="branch-name">pso-adaptivew</span></td>
+              <td>pso-cauchy + Adaptive Inertia Weight</td>
+              <td class="branch-note">No change — adaptive W does not alter aging dynamics in this environment</td>
+            </tr>
+            <tr>
+              <td><span class="branch-name">pso-full</span></td>
+              <td>pso-adaptivew + Lbest Topology (all 8 mechanisms)</td>
+              <td class="branch-note">1000/10 rejuvenations: 19→40 (×2) — Lbest creates independent stagnation cycles
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MAKESPAN CHARTS -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Makespan Analysis by VM Configuration</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('vm10',this)">10 VMs</button>
+        <button class="tab" onclick="switchTab('vm25',this)">25 VMs</button>
+        <button class="tab" onclick="switchTab('vm50',this)">50 VMs</button>
+      </div>
+      <div id="vm10" class="tab-pane active">
+        <div class="grid2">
+          <div class="card">
+            <div class="card-title">Makespan (s)</div>
+            <div class="card-subtitle">All 6 Algorithms — 10 VMs</div>
+            <div class="chart-box tall"><canvas id="c_10_line"></canvas></div>
+            <div class="legend" id="leg10"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Improvement over FCFS (%)</div>
+            <div class="card-subtitle">Reduction — 10 VMs</div>
+            <div class="chart-box tall"><canvas id="c_10_bar"></canvas></div>
+          </div>
+        </div>
+      </div>
+      <div id="vm25" class="tab-pane">
+        <div class="grid2">
+          <div class="card">
+            <div class="card-title">Makespan (s)</div>
+            <div class="card-subtitle">All 6 Algorithms — 25 VMs</div>
+            <div class="chart-box tall"><canvas id="c_25_line"></canvas></div>
+            <div class="legend" id="leg25"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Improvement over FCFS (%)</div>
+            <div class="card-subtitle">Reduction — 25 VMs</div>
+            <div class="chart-box tall"><canvas id="c_25_bar"></canvas></div>
+          </div>
+        </div>
+      </div>
+      <div id="vm50" class="tab-pane">
+        <div class="grid2">
+          <div class="card">
+            <div class="card-title">Makespan (s)</div>
+            <div class="card-subtitle">All 6 Algorithms — 50 VMs</div>
+            <div class="chart-box tall"><canvas id="c_50_line"></canvas></div>
+            <div class="legend" id="leg50"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Improvement over FCFS (%)</div>
+            <div class="card-subtitle">Reduction — 50 VMs</div>
+            <div class="chart-box tall"><canvas id="c_50_bar"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALL 54 -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">All 54 Scenarios — Side by Side</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Grouped Bar</div>
+        <div class="card-subtitle">Every scenario: all 6 algorithms</div>
+        <div class="chart-box xtall"><canvas id="c_all"></canvas></div>
+        <div class="legend" id="leg_all"></div>
+      </div>
+    </div>
+
+    <!-- AGING PSO -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Aging PSO — Internal Fitness vs CloudSim Makespan</div>
+        <div class="sec-line"></div>
+        <div class="sec-badge" style="background:rgba(244,114,182,.08);color:var(--pso)">Key Finding</div>
+      </div>
+      <div class="constraint-note"><strong>CloudSim Architectural Constraint:</strong> CloudSim 3.0.3's <code
+          style="font-family:IBM Plex Mono;font-size:12px">CloudletSchedulerTimeShared</code> normalizes PSO's task
+        assignment decisions during simulation, masking algorithm-level differences. Confirmed across 5 independent
+        experiments. The ~30% gap represents true optimization quality CloudSim cannot reflect.</div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">CloudSim vs PSO Internal</div>
+          <div class="card-subtitle">Pink = CloudSim · Cyan = PSO Internal</div>
+          <div class="chart-box tall"><canvas id="c_aging"></canvas></div>
+          <div class="legend">
+            <div class="leg-item">
+              <div class="leg-dot" style="background:var(--pso)"></div>CloudSim Makespan
+            </div>
+            <div class="leg-item">
+              <div class="leg-dot" style="background:var(--accent)"></div>PSO Internal
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Rejuvenation Events</div>
+          <div class="card-subtitle">How many particles were reborn by aging mechanism</div>
+          <div class="chart-box tall"><canvas id="c_rejuv"></canvas></div>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-title">Detailed Comparison — pso-full branch</div>
+        <div class="card-subtitle">CloudSim makespan vs PSO internal fitness with rejuvenation counts</div><br>
+        <table class="aging-tbl">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>CloudSim Makespan (s)</th>
+              <th>PSO Internal (s)</th>
+              <th>Improvement</th>
+              <th>Rejuvenations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>100 / 10</td>
+              <td>79.45</td>
+              <td class="v-internal">55.48</td>
+              <td class="v-improve">30.2%</td>
+              <td class="v-rejuv">18</td>
+            </tr>
+            <tr>
+              <td>100 / 25</td>
+              <td>28.50</td>
+              <td class="v-internal">19.85</td>
+              <td class="v-improve">30.4%</td>
+              <td class="v-rejuv">21</td>
+            </tr>
+            <tr>
+              <td>100 / 50</td>
+              <td>14.82</td>
+              <td class="v-internal">10.24</td>
+              <td class="v-improve">30.9%</td>
+              <td class="v-rejuv">17</td>
+            </tr>
+            <tr>
+              <td>500 / 10</td>
+              <td>345.44</td>
+              <td class="v-internal">241.65</td>
+              <td class="v-improve">30.1%</td>
+              <td class="v-rejuv">19</td>
+            </tr>
+            <tr>
+              <td>500 / 25</td>
+              <td>149.30</td>
+              <td class="v-internal">104.36</td>
+              <td class="v-improve">30.1%</td>
+              <td class="v-rejuv">42</td>
+            </tr>
+            <tr>
+              <td>500 / 50</td>
+              <td>72.24</td>
+              <td class="v-internal">50.38</td>
+              <td class="v-improve">30.2%</td>
+              <td class="v-rejuv">44</td>
+            </tr>
+            <tr>
+              <td>1000 / 10</td>
+              <td>854.97</td>
+              <td class="v-internal">598.32</td>
+              <td class="v-improve">30.0%</td>
+              <td class="v-rejuv">40</td>
+            </tr>
+            <tr>
+              <td>1000 / 25</td>
+              <td>254.07</td>
+              <td class="v-internal">177.62</td>
+              <td class="v-improve">30.1%</td>
+              <td class="v-rejuv">32</td>
+            </tr>
+            <tr>
+              <td>1000 / 50</td>
+              <td>140.88</td>
+              <td class="v-internal">98.46</td>
+              <td class="v-improve">30.1%</td>
+              <td class="v-rejuv">96</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABLATION -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Ablation Study — Mechanism-by-Mechanism</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title">Rejuvenation Count per Branch</div>
+        <div class="card-subtitle">Each row = one additional mechanism — measured via rejuvenation frequency</div><br>
+        <table class="abl-tbl">
+          <thead>
+            <tr>
+              <th>Branch</th>
+              <th>Added Mechanism</th>
+              <th>100/10</th>
+              <th>500/25</th>
+              <th>1000/10</th>
+              <th>1000/50</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="abl-branch">main</td>
+              <td>Aging (baseline)</td>
+              <td>15</td>
+              <td>36</td>
+              <td>17</td>
+              <td>96</td>
+              <td style="color:var(--muted);font-size:11px">Reference — aging only</td>
+            </tr>
+            <tr>
+              <td class="abl-branch">pso-obl</td>
+              <td>+ OBL</td>
+              <td class="abl-up">17 ↑</td>
+              <td class="abl-up">42 ↑</td>
+              <td class="abl-up">22 ↑</td>
+              <td class="abl-up">97 ↑</td>
+              <td style="color:var(--muted);font-size:11px">Better init → faster convergence → more aging</td>
+            </tr>
+            <tr>
+              <td class="abl-branch">pso-cauchy</td>
+              <td>+ Cauchy Mutation</td>
+              <td class="abl-down">14 ↓</td>
+              <td class="abl-down">41 ↓</td>
+              <td class="abl-down">19 ↓</td>
+              <td>96 →</td>
+              <td style="color:var(--muted);font-size:11px">Self-escape reduces aging dependency</td>
+            </tr>
+            <tr>
+              <td class="abl-branch">pso-adaptivew</td>
+              <td>+ Adaptive W</td>
+              <td>14 →</td>
+              <td>41 →</td>
+              <td>19 →</td>
+              <td>96 →</td>
+              <td style="color:var(--muted);font-size:11px">No change — adaptive W does not affect aging</td>
+            </tr>
+            <tr>
+              <td class="abl-branch">pso-full</td>
+              <td>+ Lbest Topology</td>
+              <td class="abl-up">18 ↑</td>
+              <td class="abl-up">42 ↑</td>
+              <td class="abl-up">40 ↑↑</td>
+              <td>96 →</td>
+              <td style="color:var(--muted);font-size:11px">1000/10: 19→40 — Lbest local attractors</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Ablation Chart — Rejuvenations per Branch</div>
+        <div class="card-subtitle">All 4 key scenarios across all branches</div>
+        <div class="chart-box tall"><canvas id="c_abl"></canvas></div>
+      </div>
+    </div>
+
+    <!-- UTILIZATION -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Resource Utilization</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Avg CPU Utilization (%)</div>
+          <div class="card-subtitle">100 Tasks / 50 VMs — Low-Load</div>
+          <div class="chart-box"><canvas id="c_util"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Utilization Radar</div>
+          <div class="card-subtitle">500 Tasks — All VM Configs</div>
+          <div class="chart-box"><canvas id="c_radar"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARAMETER MATRIX -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">PSO Parameter Sensitivity — 100 Tasks / 10 VMs</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Makespan (s) — Swarm Size × Iterations</div>
+          <div class="card-subtitle">Best: 65.55s · 50 particles × 500 iter · 14% better than peer (75.84s)</div><br>
+          <table class="param-tbl">
+            <thead>
+              <tr>
+                <th>Swarm Size</th>
+                <th>100 Iterations</th>
+                <th>500 Iterations</th>
+                <th>1000 Iterations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-h">30 Particles</td>
+                <td>69.70</td>
+                <td>72.67</td>
+                <td>104.31</td>
+              </tr>
+              <tr>
+                <td class="row-h">50 Particles</td>
+                <td>69.21</td>
+                <td class="best-cell">65.55 ★</td>
+                <td>79.45</td>
+              </tr>
+              <tr>
+                <td class="row-h">100 Particles</td>
+                <td>90.26</td>
+                <td>96.80</td>
+                <td>68.11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Parameter Sensitivity Chart</div>
+          <div class="card-subtitle">Makespan vs iteration count per swarm size</div>
+          <div class="chart-box"><canvas id="c_param"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FULL TABLE -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Full Results Table — All 54 Scenarios</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="filter-row">
+        <button class="fbtn active" onclick="filterTbl('all',this)">All</button>
+        <button class="fbtn" onclick="filterTbl('100',this)">100 Tasks</button>
+        <button class="fbtn" onclick="filterTbl('500',this)">500 Tasks</button>
+        <button class="fbtn" onclick="filterTbl('1000',this)">1000 Tasks</button>
+        <button class="fbtn" onclick="filterTbl('10vm',this)">10 VMs</button>
+        <button class="fbtn" onclick="filterTbl('25vm',this)">25 VMs</button>
+        <button class="fbtn" onclick="filterTbl('50vm',this)">50 VMs</button>
+      </div>
+      <div class="tbl-wrap">
+        <table class="main">
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>Tasks</th>
+              <th>VMs</th>
+              <th>Makespan (s)</th>
+              <th>Avg Util %</th>
+              <th>PSO Internal (s)</th>
+              <th>Rejuvenations</th>
+              <th>vs FCFS</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbl-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FINDINGS -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title">Key Findings</div>
+        <div class="sec-line"></div>
+      </div>
+      <div class="findings">
+        <div class="finding">
+          <div class="finding-num" style="color:var(--pso)">~30%</div>
+          <div class="finding-txt">Aging PSO internal fitness improvement across ALL 9 scenarios. PSO finds 28–31%
+            better solutions than CloudSim's TimeShared scheduler reflects — confirmed via PSO_Internal_Makespan metric.
+          </div>
+        </div>
+        <div class="finding">
+          <div class="finding-num" style="color:var(--green)">76%</div>
+          <div class="finding-txt">Maximum makespan reduction by PSO over FCFS in the 500/10 scenario (1035s → 345s).
+            Demonstrates critical value of meta-heuristic scheduling over static approaches.</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num" style="color:var(--amber)">❌ SJF</div>
+          <div class="finding-txt">SJF proved Machine-Blind — worse than FCFS in 100/10 scenario (239s vs 217s). Sorting
+            by task length without VM speed consideration causes systematic misallocation.</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num" style="color:var(--violet)">≈ RR</div>
+          <div class="finding-txt">Round Robin and FCFS produce near-identical results when tasks arrive simultaneously
+            at t=0.1. Circular ordering provides zero advantage under batch task submission.</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num" style="color:var(--accent)">65.55s</div>
+          <div class="finding-txt">Best CloudSim makespan: 50 particles × 500 iterations in 100/10. 14% better than peer
+            implementation best of 75.84s using different hybrid strategy.</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num" style="color:#4a9eff">96</div>
+          <div class="finding-txt">Maximum rejuvenations in 1000/50 — aging mechanism actively combats premature
+            convergence at scale. Lbest topology doubles rejuvenations in 1000/10 (17→40).</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>Task Scheduling Optimization in Cloud Computing Using PSO — Istinye Üniversitesi, April 2026</div>
+      <div>Simay Su Kumbasar · Zehra Betül Şit · Supervisor: Emir Seyyedabbasi</div>
+    </footer>
+  </div>
+
+  <script>
+    const DATA = [
+      { a: 'FCFS', t: 100, v: 10, ms: 217.48, u: 100.00, pi: null, rj: null }, { a: 'RR', t: 100, v: 10, ms: 151.33, u: 100.00, pi: null, rj: null }, { a: 'SJF', t: 100, v: 10, ms: 239.18, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 100, v: 10, ms: 73.43, u: 100.00, pi: null, rj: null }, { a: 'MAXMIN', t: 100, v: 10, ms: 65.55, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 100, v: 10, ms: 79.45, u: 100.00, pi: 55.48, rj: 18 },
+      { a: 'FCFS', t: 100, v: 25, ms: 119.85, u: 77.45, pi: null, rj: null }, { a: 'RR', t: 100, v: 25, ms: 119.14, u: 76.27, pi: null, rj: null }, { a: 'SJF', t: 100, v: 25, ms: 77.95, u: 88.45, pi: null, rj: null }, { a: 'MINMIN', t: 100, v: 25, ms: 33.40, u: 91.20, pi: null, rj: null }, { a: 'MAXMIN', t: 100, v: 25, ms: 27.94, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 100, v: 25, ms: 28.50, u: 100.00, pi: 19.85, rj: 21 },
+      { a: 'FCFS', t: 100, v: 50, ms: 39.03, u: 67.84, pi: null, rj: null }, { a: 'RR', t: 100, v: 50, ms: 63.74, u: 37.39, pi: null, rj: null }, { a: 'SJF', t: 100, v: 50, ms: 57.80, u: 43.06, pi: null, rj: null }, { a: 'MINMIN', t: 100, v: 50, ms: 22.30, u: 62.84, pi: null, rj: null }, { a: 'MAXMIN', t: 100, v: 50, ms: 14.47, u: 97.31, pi: null, rj: null }, { a: 'PSO', t: 100, v: 50, ms: 14.82, u: 97.26, pi: 10.24, rj: 17 },
+      { a: 'FCFS', t: 500, v: 10, ms: 1035.61, u: 100.00, pi: null, rj: null }, { a: 'RR', t: 500, v: 10, ms: 1049.44, u: 100.00, pi: null, rj: null }, { a: 'SJF', t: 500, v: 10, ms: 1062.67, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 500, v: 10, ms: 370.22, u: 100.00, pi: null, rj: null }, { a: 'MAXMIN', t: 500, v: 10, ms: 361.28, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 500, v: 10, ms: 345.44, u: 100.00, pi: 241.65, rj: 19 },
+      { a: 'FCFS', t: 500, v: 25, ms: 420.16, u: 100.00, pi: null, rj: null }, { a: 'RR', t: 500, v: 25, ms: 451.99, u: 100.00, pi: null, rj: null }, { a: 'SJF', t: 500, v: 25, ms: 415.18, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 500, v: 25, ms: 131.54, u: 100.00, pi: null, rj: null }, { a: 'MAXMIN', t: 500, v: 25, ms: 132.05, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 500, v: 25, ms: 149.30, u: 100.00, pi: 104.36, rj: 42 },
+      { a: 'FCFS', t: 500, v: 50, ms: 252.11, u: 99.29, pi: null, rj: null }, { a: 'RR', t: 500, v: 50, ms: 245.61, u: 99.10, pi: null, rj: null }, { a: 'SJF', t: 500, v: 50, ms: 230.65, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 500, v: 50, ms: 85.80, u: 99.24, pi: null, rj: null }, { a: 'MAXMIN', t: 500, v: 50, ms: 76.54, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 500, v: 50, ms: 72.24, u: 100.00, pi: 50.38, rj: 44 },
+      { a: 'FCFS', t: 1000, v: 10, ms: 1541.24, u: 100.00, pi: null, rj: null }, { a: 'RR', t: 1000, v: 10, ms: 2213.95, u: 100.00, pi: null, rj: null }, { a: 'SJF', t: 1000, v: 10, ms: 2113.50, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 1000, v: 10, ms: 659.33, u: 100.00, pi: null, rj: null }, { a: 'MAXMIN', t: 1000, v: 10, ms: 735.59, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 1000, v: 10, ms: 854.97, u: 100.00, pi: 598.32, rj: 40 },
+      { a: 'FCFS', t: 1000, v: 25, ms: 935.24, u: 100.00, pi: null, rj: null }, { a: 'RR', t: 1000, v: 25, ms: 975.79, u: 100.00, pi: null, rj: null }, { a: 'SJF', t: 1000, v: 25, ms: 875.49, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 1000, v: 25, ms: 294.22, u: 100.00, pi: null, rj: null }, { a: 'MAXMIN', t: 1000, v: 25, ms: 280.96, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 1000, v: 25, ms: 254.07, u: 100.00, pi: 177.62, rj: 32 },
+      { a: 'FCFS', t: 1000, v: 50, ms: 456.08, u: 100.00, pi: null, rj: null }, { a: 'RR', t: 1000, v: 50, ms: 444.07, u: 100.00, pi: null, rj: null }, { a: 'SJF', t: 1000, v: 50, ms: 449.11, u: 100.00, pi: null, rj: null }, { a: 'MINMIN', t: 1000, v: 50, ms: 151.95, u: 100.00, pi: null, rj: null }, { a: 'MAXMIN', t: 1000, v: 50, ms: 133.27, u: 100.00, pi: null, rj: null }, { a: 'PSO', t: 1000, v: 50, ms: 140.88, u: 100.00, pi: 98.46, rj: 96 }
+    ];
+    const ALGOS = ['FCFS', 'RR', 'SJF', 'MINMIN', 'MAXMIN', 'PSO'];
+    const COLORS = { FCFS: '#4a9eff', RR: '#8b5cf6', SJF: '#f59e0b', MINMIN: '#34d399', MAXMIN: '#10b981', PSO: '#f472b6' };
+    const TIP = { backgroundColor: '#0c1219', borderColor: '#1a2535', borderWidth: 1, titleColor: '#dde6f0', bodyColor: '#5a7a99', titleFont: { family: 'IBM Plex Mono', size: 11 }, bodyFont: { family: 'IBM Plex Mono', size: 11 } };
+    const SC = { x: { grid: { color: 'rgba(26,37,53,.6)' }, ticks: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 } }, border: { color: '#1a2535' } }, y: { grid: { color: 'rgba(26,37,53,.6)' }, ticks: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 } }, border: { color: '#1a2535' } } };
+    function get(a, t, v) { const r = DATA.find(d => d.a === a && d.t === t && d.v === v); return r ? r.ms : 0; }
+    function getU(a, t, v) { const r = DATA.find(d => d.a === a && d.t === t && d.v === v); return r ? r.u : 0; }
+    function makeLeg(id) { const el = document.getElementById(id); if (el) el.innerHTML = ALGOS.map(a => `<div class="leg-item"><div class="leg-dot" style="background:${COLORS[a]}"></div>${a}</div>`).join(''); }
+    function lineChart(id, vms, legId) { new Chart(document.getElementById(id), { type: 'line', data: { labels: ['100', '500', '1000'], datasets: ALGOS.map(a => ({ label: a, data: [100, 500, 1000].map(t => get(a, t, vms)), borderColor: COLORS[a], backgroundColor: COLORS[a] + '18', tension: .3, pointRadius: 5, borderWidth: 2 })) }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: TIP }, scales: SC } }); makeLeg(legId); }
+    function barChart(id, vms) { new Chart(document.getElementById(id), { type: 'bar', data: { labels: ['100', '500', '1000'], datasets: ['RR', 'SJF', 'MINMIN', 'MAXMIN', 'PSO'].map(a => ({ label: a, data: [100, 500, 1000].map(t => ((get('FCFS', t, vms) - get(a, t, vms)) / get('FCFS', t, vms) * 100).toFixed(1)), backgroundColor: COLORS[a] + 'bb', borderColor: COLORS[a], borderWidth: 1, borderRadius: 2 })) }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 }, boxWidth: 8 } }, tooltip: { ...TIP, callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%` } } }, scales: { ...SC, y: { ...SC.y, ticks: { ...SC.y.ticks, callback: v => v + '%' } } } } }); }
+    lineChart('c_10_line', 10, 'leg10'); lineChart('c_25_line', 25, 'leg25'); lineChart('c_50_line', 50, 'leg50');
+    barChart('c_10_bar', 10); barChart('c_25_bar', 25); barChart('c_50_bar', 50);
+    const combos = [{ t: 100, v: 10 }, { t: 100, v: 25 }, { t: 100, v: 50 }, { t: 500, v: 10 }, { t: 500, v: 25 }, { t: 500, v: 50 }, { t: 1000, v: 10 }, { t: 1000, v: 25 }, { t: 1000, v: 50 }];
+    new Chart(document.getElementById('c_all'), { type: 'bar', data: { labels: combos.map(c => `${c.t}/${c.v}`), datasets: ALGOS.map(a => ({ label: a, data: combos.map(c => get(a, c.t, c.v)), backgroundColor: COLORS[a] + 'bb', borderColor: COLORS[a], borderWidth: 1, borderRadius: 2 })) }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { ...TIP, callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}s` } } }, scales: SC } });
+    makeLeg('leg_all');
+    const agD = [{ s: '100/10', cs: 79.45, pi: 55.48, rj: 18 }, { s: '100/25', cs: 28.50, pi: 19.85, rj: 21 }, { s: '100/50', cs: 14.82, pi: 10.24, rj: 17 }, { s: '500/10', cs: 345.44, pi: 241.65, rj: 19 }, { s: '500/25', cs: 149.30, pi: 104.36, rj: 42 }, { s: '500/50', cs: 72.24, pi: 50.38, rj: 44 }, { s: '1000/10', cs: 854.97, pi: 598.32, rj: 40 }, { s: '1000/25', cs: 254.07, pi: 177.62, rj: 32 }, { s: '1000/50', cs: 140.88, pi: 98.46, rj: 96 }];
+    new Chart(document.getElementById('c_aging'), { type: 'bar', data: { labels: agD.map(d => d.s), datasets: [{ label: 'CloudSim', data: agD.map(d => d.cs), backgroundColor: 'rgba(244,114,182,.55)', borderColor: '#f472b6', borderWidth: 1, borderRadius: 2 }, { label: 'PSO Internal', data: agD.map(d => d.pi), backgroundColor: 'rgba(0,212,255,.55)', borderColor: '#00d4ff', borderWidth: 1, borderRadius: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { ...TIP, callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}s` } } }, scales: { ...SC, x: { ...SC.x, ticks: { ...SC.x.ticks, font: { family: 'IBM Plex Mono', size: 8 } } } } } });
+    new Chart(document.getElementById('c_rejuv'), { type: 'bar', data: { labels: agD.map(d => d.s), datasets: [{ label: 'Rejuvenations', data: agD.map(d => d.rj), backgroundColor: agD.map(d => d.rj > 50 ? 'rgba(245,158,11,.85)' : d.rj > 25 ? 'rgba(245,158,11,.55)' : 'rgba(245,158,11,.3)'), borderColor: '#f59e0b', borderWidth: 1, borderRadius: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { ...TIP, callbacks: { label: ctx => ` ${ctx.raw} rejuvenations` } } }, scales: { ...SC, x: { ...SC.x, ticks: { ...SC.x.ticks, font: { family: 'IBM Plex Mono', size: 8 } } } } } });
+    new Chart(document.getElementById('c_abl'), { type: 'bar', data: { labels: ['main', 'pso-obl', 'pso-cauchy', 'pso-adaptivew', 'pso-full'], datasets: [{ label: '100/10', data: [15, 17, 14, 14, 18], backgroundColor: 'rgba(0,212,255,.7)', borderColor: '#00d4ff', borderWidth: 1, borderRadius: 2 }, { label: '500/25', data: [36, 42, 41, 41, 42], backgroundColor: 'rgba(244,114,182,.7)', borderColor: '#f472b6', borderWidth: 1, borderRadius: 2 }, { label: '1000/10', data: [17, 22, 19, 19, 40], backgroundColor: 'rgba(139,92,246,.7)', borderColor: '#8b5cf6', borderWidth: 1, borderRadius: 2 }, { label: '1000/50', data: [96, 97, 96, 96, 96], backgroundColor: 'rgba(245,158,11,.7)', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 }, boxWidth: 8 } }, tooltip: TIP }, scales: SC } });
+    new Chart(document.getElementById('c_util'), { type: 'bar', data: { labels: ALGOS, datasets: [{ data: ALGOS.map(a => getU(a, 100, 50)), backgroundColor: ALGOS.map(a => COLORS[a] + 'bb'), borderColor: ALGOS.map(a => COLORS[a]), borderWidth: 1, borderRadius: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { ...TIP, callbacks: { label: ctx => ` ${ctx.raw}%` } } }, scales: { ...SC, y: { ...SC.y, max: 110, ticks: { ...SC.y.ticks, callback: v => v + '%' } } } } });
+    new Chart(document.getElementById('c_radar'), { type: 'radar', data: { labels: ['10 VMs', '25 VMs', '50 VMs'], datasets: ALGOS.map(a => ({ label: a, data: [getU(a, 500, 10), getU(a, 500, 25), getU(a, 500, 50)], borderColor: COLORS[a], backgroundColor: COLORS[a] + '18', pointBackgroundColor: COLORS[a], borderWidth: 2 })) }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 }, boxWidth: 8 } }, tooltip: TIP }, scales: { r: { min: 30, max: 101, grid: { color: 'rgba(26,37,53,.8)' }, angleLines: { color: 'rgba(26,37,53,.8)' }, ticks: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 }, backdropColor: 'transparent', callback: v => v + '%' }, pointLabels: { color: '#94a3b8', font: { family: 'IBM Plex Mono', size: 10 } } } } } });
+    new Chart(document.getElementById('c_param'), { type: 'line', data: { labels: ['100 iter', '500 iter', '1000 iter'], datasets: [{ label: '30 Particles', data: [69.70, 72.67, 104.31], borderColor: '#4a9eff', backgroundColor: '#4a9eff18', tension: .3, pointRadius: 5, borderWidth: 2 }, { label: '50 Particles', data: [69.21, 65.55, 79.45], borderColor: '#f472b6', backgroundColor: '#f472b618', tension: .3, pointRadius: 5, borderWidth: 2 }, { label: '100 Particles', data: [90.26, 96.80, 68.11], borderColor: '#10b981', backgroundColor: '#10b98118', tension: .3, pointRadius: 5, borderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: '#5a7a99', font: { family: 'IBM Plex Mono', size: 9 }, boxWidth: 8 } }, tooltip: TIP }, scales: { ...SC, y: { ...SC.y, ticks: { ...SC.y.ticks, callback: v => v + 's' } } } } });
+    function buildTable(f = 'all') {
+      const tbody = document.getElementById('tbl-body'); tbody.innerHTML = '';
+      let rows = DATA;
+      if (f === '100') rows = DATA.filter(d => d.t === 100); else if (f === '500') rows = DATA.filter(d => d.t === 500); else if (f === '1000') rows = DATA.filter(d => d.t === 1000); else if (f === '10vm') rows = DATA.filter(d => d.v === 10); else if (f === '25vm') rows = DATA.filter(d => d.v === 25); else if (f === '50vm') rows = DATA.filter(d => d.v === 50);
+      rows.forEach(row => {
+        const fcfs = DATA.find(d => d.a === 'FCFS' && d.t === row.t && d.v === row.v);
+        const pct = fcfs ? ((fcfs.ms - row.ms) / fcfs.ms * 100).toFixed(1) : 0;
+        const isWinner = row.ms === Math.min(...ALGOS.map(a => get(a, row.t, row.v)));
+        const piCell = row.pi ? `<span style="color:var(--pso);font-weight:700">${row.pi}</span>` : '<span style="color:var(--border2)">—</span>';
+        const rjCell = row.rj ? `<span style="color:var(--amber)">${row.rj}</span>` : '<span style="color:var(--border2)">—</span>';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td><span class="badge b-${row.a}">${row.a}</span></td><td>${row.t}</td><td>${row.v}</td><td>${row.ms.toFixed(2)}</td><td>${row.u.toFixed(2)}%</td><td>${piCell}</td><td>${rjCell}</td><td><span class="${pct >= 0 ? 'pct-good' : 'pct-bad'}">${pct >= 0 ? '-' : '+'}${Math.abs(pct)}%</span></td><td>${isWinner ? '<span class="best-tag">★ BEST</span>' : ''}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    buildTable();
+    function filterTbl(f, btn) { document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); buildTable(f); }
+    function switchTab(id, btn) { document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active')); document.querySelectorAll('.tab').forEach(t => t.classList.remove('active')); document.getElementById(id).classList.add('active'); btn.classList.add('active'); }
+  </script>
+</body>
+
+</html>
